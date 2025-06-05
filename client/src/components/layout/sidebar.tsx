@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { 
   LayoutDashboard, 
@@ -10,9 +11,31 @@ import {
   Activity, 
   Brain, 
   Lightbulb,
-  Settings 
+  Settings,
+  User,
+  LogOut,
+  Moon,
+  Sun,
+  Monitor,
+  Accessibility,
+  Eye,
+  Volume2,
+  ChevronDown
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { 
+  DropdownMenu, 
+  DropdownMenuContent, 
+  DropdownMenuItem, 
+  DropdownMenuLabel, 
+  DropdownMenuSeparator, 
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger 
+} from "@/components/ui/dropdown-menu";
+import { Switch } from "@/components/ui/switch";
 
 const navigation = [
   {
@@ -67,6 +90,10 @@ const aiInsights = [
 
 export function Sidebar() {
   const [location] = useLocation();
+  const [theme, setTheme] = useState("light");
+  const [highContrast, setHighContrast] = useState(false);
+  const [largeText, setLargeText] = useState(false);
+  const [soundEnabled, setSoundEnabled] = useState(true);
 
   return (
     <div className="w-64 bg-white border-r border-gray-200 flex flex-col shadow-sm">
@@ -136,9 +163,105 @@ export function Sidebar() {
             <p className="text-sm font-medium text-gray-900">John Doe</p>
             <p className="text-xs text-gray-500">john@company.com</p>
           </div>
-          <button className="text-gray-400 hover:text-gray-600">
-            <Settings className="w-4 h-4" />
-          </button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="text-gray-400 hover:text-gray-600 p-1">
+                <Settings className="w-4 h-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-64">
+              <DropdownMenuLabel>
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white text-xs font-medium">
+                    JD
+                  </div>
+                  <div>
+                    <p className="font-medium">John Doe</p>
+                    <p className="text-xs text-gray-500">Administrator</p>
+                  </div>
+                </div>
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              
+              <DropdownMenuItem>
+                <User className="w-4 h-4 mr-2" />
+                Profile Settings
+              </DropdownMenuItem>
+              
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>
+                  <Monitor className="w-4 h-4 mr-2" />
+                  Theme
+                </DropdownMenuSubTrigger>
+                <DropdownMenuSubContent>
+                  <DropdownMenuItem onClick={() => setTheme("light")}>
+                    <Sun className="w-4 h-4 mr-2" />
+                    Light
+                    {theme === "light" && <div className="w-2 h-2 bg-primary rounded-full ml-auto" />}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("dark")}>
+                    <Moon className="w-4 h-4 mr-2" />
+                    Dark
+                    {theme === "dark" && <div className="w-2 h-2 bg-primary rounded-full ml-auto" />}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("system")}>
+                    <Monitor className="w-4 h-4 mr-2" />
+                    System
+                    {theme === "system" && <div className="w-2 h-2 bg-primary rounded-full ml-auto" />}
+                  </DropdownMenuItem>
+                </DropdownMenuSubContent>
+              </DropdownMenuSub>
+
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>
+                  <Accessibility className="w-4 h-4 mr-2" />
+                  Accessibility
+                </DropdownMenuSubTrigger>
+                <DropdownMenuSubContent>
+                  <DropdownMenuItem className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <Eye className="w-4 h-4 mr-2" />
+                      High Contrast
+                    </div>
+                    <Switch 
+                      checked={highContrast}
+                      onCheckedChange={setHighContrast}
+                      className="ml-2"
+                    />
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <Monitor className="w-4 h-4 mr-2" />
+                      Large Text
+                    </div>
+                    <Switch 
+                      checked={largeText}
+                      onCheckedChange={setLargeText}
+                      className="ml-2"
+                    />
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <Volume2 className="w-4 h-4 mr-2" />
+                      Sound Effects
+                    </div>
+                    <Switch 
+                      checked={soundEnabled}
+                      onCheckedChange={setSoundEnabled}
+                      className="ml-2"
+                    />
+                  </DropdownMenuItem>
+                </DropdownMenuSubContent>
+              </DropdownMenuSub>
+
+              <DropdownMenuSeparator />
+              
+              <DropdownMenuItem className="text-red-600">
+                <LogOut className="w-4 h-4 mr-2" />
+                Sign Out
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </div>
