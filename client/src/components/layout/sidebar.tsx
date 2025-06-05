@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { 
   LayoutDashboard, 
@@ -90,10 +90,25 @@ const aiInsights = [
 
 export function Sidebar() {
   const [location] = useLocation();
+  const [, setLocation] = useLocation();
   const [theme, setTheme] = useState("light");
   const [highContrast, setHighContrast] = useState(false);
   const [largeText, setLargeText] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
+  const [user, setUser] = useState({ name: "John Doe", email: "john@company.com", role: "Administrator" });
+
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("user");
+    setLocation("/login");
+  };
 
   return (
     <div className="w-64 bg-white border-r border-gray-200 flex flex-col shadow-sm">
@@ -160,8 +175,8 @@ export function Sidebar() {
             JD
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-gray-900">John Doe</p>
-            <p className="text-xs text-gray-500">john@company.com</p>
+            <p className="text-sm font-medium text-gray-900">{user.name}</p>
+            <p className="text-xs text-gray-500">{user.email}</p>
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -176,8 +191,8 @@ export function Sidebar() {
                     JD
                   </div>
                   <div>
-                    <p className="font-medium">John Doe</p>
-                    <p className="text-xs text-gray-500">Administrator</p>
+                    <p className="font-medium">{user.name}</p>
+                    <p className="text-xs text-gray-500">{user.role}</p>
                   </div>
                 </div>
               </DropdownMenuLabel>
@@ -256,7 +271,7 @@ export function Sidebar() {
 
               <DropdownMenuSeparator />
               
-              <DropdownMenuItem className="text-red-600">
+              <DropdownMenuItem className="text-red-600" onClick={handleLogout}>
                 <LogOut className="w-4 h-4 mr-2" />
                 Sign Out
               </DropdownMenuItem>
