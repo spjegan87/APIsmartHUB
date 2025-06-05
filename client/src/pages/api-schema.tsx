@@ -3,10 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Folder, FileCode, Play } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Folder, FileCode, Play, AlertCircle } from "lucide-react";
 
 export default function ApiSchema() {
   const [showDemo, setShowDemo] = useState(false);
+  const [iframeError, setIframeError] = useState(false);
   const defaultSchema = `{
   "openapi": "3.0.0",
   "info": {
@@ -74,13 +76,25 @@ export default function ApiSchema() {
                   <DialogHeader>
                     <DialogTitle>API Testing Demo</DialogTitle>
                   </DialogHeader>
-                  <div className="flex-1 overflow-hidden">
+                  <div className="flex-1 overflow-hidden p-4">
+                    {iframeError ? (
+                      <Alert className="mb-4">
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertDescription>
+                          Unable to load the demo interface from http://192.168.31.187:8000/tryit. 
+                          Please check if the service is running and accessible from your network.
+                        </AlertDescription>
+                      </Alert>
+                    ) : null}
                     <iframe 
                       src="http://192.168.31.187:8000/tryit" 
                       width="100%" 
-                      height="700px" 
+                      height="650px" 
                       frameBorder="0"
                       className="rounded-lg border"
+                      onError={() => setIframeError(true)}
+                      onLoad={() => setIframeError(false)}
+                      title="API Testing Demo"
                     />
                   </div>
                 </DialogContent>
