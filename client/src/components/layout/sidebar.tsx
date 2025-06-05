@@ -59,11 +59,6 @@ const navigation = [
 
 const aiInsights = [
   {
-    name: "Performance AI",
-    href: "/insights",
-    icon: Brain,
-  },
-  {
     name: "Recommendations", 
     href: "/recommendations",
     icon: Lightbulb,

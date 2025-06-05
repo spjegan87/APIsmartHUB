@@ -49,7 +49,6 @@ function Router() {
             <Route path="/billing" component={Billing} />
             <Route path="/docs" component={Documentation} />
             <Route path="/monitoring" component={Monitoring} />
-            <Route path="/insights" component={AIInsights} />
             <Route path="/recommendations" component={AIInsights} />
             <Route component={NotFound} />
           </Switch>
