@@ -118,7 +118,7 @@ export function Sidebar() {
           API
         </div>
         <span className="ml-3 text-xl font-semibold text-card-foreground">
-          APIsmartHub
+          APIsmartHUB
         </span>
       </div>
 
