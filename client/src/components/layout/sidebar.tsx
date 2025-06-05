@@ -21,7 +21,7 @@ const navigation = [
     icon: LayoutDashboard,
   },
   {
-    name: "API Management", 
+    name: "API Schema Management", 
     href: "/api-management",
     icon: Code,
   },
