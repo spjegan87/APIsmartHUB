@@ -62,6 +62,7 @@ function ProtectedRoute({ component: Component }: { component: React.ComponentTy
 
 function Router() {
   const [location] = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const config = pageConfig[location as keyof typeof pageConfig] || pageConfig["/"];
 
   if (location === "/login") {
@@ -69,11 +70,25 @@ function Router() {
   }
 
   return (
-    <div className="flex h-screen bg-background">
-      <Sidebar />
-      <div className="flex-1 flex flex-col overflow-hidden">
+    <div className="flex h-screen bg-background overflow-hidden">
+      {/* Mobile Menu Button */}
+      <Button
+        variant="ghost"
+        size="icon"
+        className="fixed top-4 left-4 z-50 lg:hidden"
+        onClick={() => setIsMobileMenuOpen(true)}
+      >
+        <Menu className="h-5 w-5" />
+      </Button>
+
+      <Sidebar 
+        isMobileOpen={isMobileMenuOpen} 
+        onMobileClose={() => setIsMobileMenuOpen(false)} 
+      />
+      
+      <div className="flex-1 flex flex-col overflow-hidden lg:ml-0">
         <Header title={config.title} description={config.description} />
-        <main className="flex-1 overflow-y-auto p-6 bg-muted/20">
+        <main className="flex-1 overflow-y-auto p-3 sm:p-6 bg-muted/20">
           <Switch>
             <Route path="/" component={() => <ProtectedRoute component={Dashboard} />} />
             <Route path="/api-management" component={() => <ProtectedRoute component={ApiManagement} />} />

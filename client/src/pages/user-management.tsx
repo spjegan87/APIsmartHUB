@@ -306,7 +306,7 @@ export default function UserManagement() {
 
       {/* Main Content */}
       <Tabs defaultValue="users" className="w-full">
-        <TabsList className="grid w-full grid-cols-6">
+        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-1">
           <TabsTrigger value="users">Users</TabsTrigger>
           <TabsTrigger value="super-admin">Super Admin Controls</TabsTrigger>
           <TabsTrigger value="roles">Role Management</TabsTrigger>
