@@ -198,3 +198,67 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
 }
+
+/* Grid Pattern Background */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Dark mode grid pattern */
+.dark .bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+}
+
+/* High contrast mode accessibility */
+.high-contrast .large-text h1, 
+.high-contrast .large-text h2, 
+.high-contrast .large-text h3 {
+  font-size: 1.25em;
+}
+
+.high-contrast .large-text p, 
+.high-contrast .large-text span, 
+.high-contrast .large-text div {
+  font-size: 1.125em;
+}
+
+.high-contrast .large-text button, 
+.high-contrast .large-text input, 
+.high-contrast .large-text select {
+  font-size: 1.125em;
+  padding: 0.75rem 1rem;
+}
+
+/* Large text mode accessibility */
+.large-text h1, .large-text h2, .large-text h3 {
+  font-size: 1.25em;
+}
+
+.large-text p, .large-text span, .large-text div {
+  font-size: 1.125em;
+}
+
+.large-text button, .large-text input, .large-text select {
+  font-size: 1.125em;
+  padding: 0.75rem 1rem;
+}
+
+/* API-themed animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float 3s ease-in-out infinite;
+  animation-delay: 1s;
+}

@@ -143,9 +143,9 @@ export default function Dashboard() {
         <TabsContent value="billing" className="mt-6">
           <EnhancedBillingDashboard />
         </TabsContent>
-          </Tabs>
+      </Tabs>
+          </div>
         </div>
-      </div>
       
       {/* Footer */}
       <Footer />
