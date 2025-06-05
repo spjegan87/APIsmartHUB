@@ -30,7 +30,7 @@ export function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
   return (
     <div className="fixed inset-0 z-50 bg-black/50" onClick={onClose}>
       <div 
-        className="fixed right-0 top-0 h-full w-96 bg-background border-l border-border shadow-lg overflow-y-auto"
+        className="fixed right-0 top-0 h-full w-full sm:w-96 bg-background border-l border-border shadow-lg overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -42,7 +42,7 @@ export function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
         </div>
 
         {/* Settings Content */}
-        <div className="p-6 space-y-6">
+        <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           {/* Theme Settings */}
           <div>
             <div className="flex items-center gap-2 mb-4">

@@ -19,27 +19,27 @@ export default function Dashboard() {
       
       {/* Comprehensive Dashboard Tabs */}
       <Tabs defaultValue="overview" className="w-full">
-        <TabsList className="grid w-full grid-cols-7">
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="traffic">API Traffic</TabsTrigger>
-          <TabsTrigger value="users">Active Users</TabsTrigger>
-          <TabsTrigger value="security">Security</TabsTrigger>
-          <TabsTrigger value="schema">Schema</TabsTrigger>
-          <TabsTrigger value="logs">Logs</TabsTrigger>
-          <TabsTrigger value="billing">Billing</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-1">
+          <TabsTrigger value="overview" className="text-xs sm:text-sm">Overview</TabsTrigger>
+          <TabsTrigger value="traffic" className="text-xs sm:text-sm">Traffic</TabsTrigger>
+          <TabsTrigger value="users" className="text-xs sm:text-sm">Users</TabsTrigger>
+          <TabsTrigger value="security" className="text-xs sm:text-sm">Security</TabsTrigger>
+          <TabsTrigger value="schema" className="text-xs sm:text-sm">Schema</TabsTrigger>
+          <TabsTrigger value="logs" className="text-xs sm:text-sm">Logs</TabsTrigger>
+          <TabsTrigger value="billing" className="text-xs sm:text-sm">Billing</TabsTrigger>
         </TabsList>
         
-        <TabsContent value="overview" className="space-y-6 mt-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <TabsContent value="overview" className="space-y-4 sm:space-y-6 mt-4 sm:mt-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             <UsageChart />
             <TopAPIs />
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             <RecentActivity />
             
             {/* AI Insights Panel */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-6 border border-blue-200">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-950/50 dark:to-indigo-950/50 rounded-xl p-4 sm:p-6 border border-blue-200 dark:border-blue-800">
               <div className="flex items-center mb-4">
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
                   🧠

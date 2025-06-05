@@ -6,6 +6,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/contexts/theme-context";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import Dashboard from "@/pages/dashboard";
 import ApiManagement from "@/pages/api-management";
 import UserManagement from "@/pages/user-management";
