@@ -23,7 +23,9 @@ import {
   Brain,
   Star,
   Lightbulb,
-  TrendingUp
+  TrendingUp,
+  Edit,
+  UserCheck
 } from "lucide-react";
 
 const userData = [
@@ -221,6 +223,39 @@ const recommendations = [
   }
 ];
 
+const supplierData = [
+  {
+    id: 1,
+    name: "Acme Technologies",
+    email: "tech@acme.com",
+    initials: "AT",
+    status: "Active",
+    users: 12,
+    created: "Jan 15, 2025",
+    avatar: "bg-blue-500"
+  },
+  {
+    id: 2,
+    name: "Global Solutions",
+    email: "info@globalsolutions.com", 
+    initials: "GS",
+    status: "Active",
+    users: 8,
+    created: "Feb 22, 2025",
+    avatar: "bg-green-500"
+  },
+  {
+    id: 3,
+    name: "Nova Industries",
+    email: "contact@novaindustries.com",
+    initials: "NI",
+    status: "Inactive",
+    users: 5,
+    created: "Mar 10, 2025",
+    avatar: "bg-purple-500"
+  }
+];
+
 export default function UserManagement() {
   const [viewMode, setViewMode] = useState("table");
 
@@ -268,8 +303,9 @@ export default function UserManagement() {
 
       {/* Main Content */}
       <Tabs defaultValue="users" className="w-full">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="users">Users</TabsTrigger>
+          <TabsTrigger value="super-admin">Super Admin Controls</TabsTrigger>
           <TabsTrigger value="roles">Role Management</TabsTrigger>
           <TabsTrigger value="activity">User Activity & Audit Log</TabsTrigger>
           <TabsTrigger value="recommendations">AI Recommendations</TabsTrigger>
@@ -438,6 +474,123 @@ export default function UserManagement() {
               </div>
             </CardContent>
           </Card>
+        </TabsContent>
+
+        {/* Super Admin Controls Tab */}
+        <TabsContent value="super-admin" className="space-y-6 mt-6">
+          <div>
+            <h2 className="text-xl font-semibold text-gray-900">Super Admin Controls</h2>
+            <p className="text-sm text-gray-500">Manage suppliers and control user access</p>
+          </div>
+          
+          <Tabs defaultValue="supplier-management" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 max-w-2xl">
+              <TabsTrigger value="supplier-management">Supplier Management</TabsTrigger>
+              <TabsTrigger value="user-supplier-mapping">User-Supplier Mapping</TabsTrigger>
+              <TabsTrigger value="access-control-matrix">Access Control Matrix</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="supplier-management" className="space-y-6 mt-6">
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="relative">
+                      <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                      <Input placeholder="Search suppliers..." className="pl-10 w-64" />
+                    </div>
+                    <Button>
+                      <Plus className="w-4 h-4 mr-2" />
+                      Add Supplier
+                    </Button>
+                  </div>
+
+                  {/* Supplier Table */}
+                  <div className="space-y-4">
+                    {/* Table Header */}
+                    <div className="grid grid-cols-6 gap-4 text-xs font-medium text-gray-500 uppercase tracking-wider border-b pb-3">
+                      <div className="flex items-center">
+                        <input type="checkbox" className="rounded border-gray-300 mr-3" />
+                        SUPPLIER NAME
+                      </div>
+                      <div>STATUS</div>
+                      <div>USERS</div>
+                      <div>CREATED</div>
+                      <div>ACTIONS</div>
+                      <div></div>
+                    </div>
+
+                    {/* Supplier Rows */}
+                    {supplierData.map((supplier) => (
+                      <div key={supplier.id} className="grid grid-cols-6 gap-4 items-center py-4 border-b border-gray-100 hover:bg-gray-50">
+                        <div className="flex items-center">
+                          <input type="checkbox" className="rounded border-gray-300 mr-3" />
+                          <div className="flex items-center space-x-3">
+                            <div className={`w-10 h-10 rounded-full ${supplier.avatar} flex items-center justify-center text-white font-semibold text-sm`}>
+                              {supplier.initials}
+                            </div>
+                            <div>
+                              <div className="font-medium text-gray-900">{supplier.name}</div>
+                              <div className="text-sm text-gray-500">{supplier.email}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <Badge className={supplier.status === "Active" ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"}>
+                            {supplier.status}
+                          </Badge>
+                        </div>
+                        <div className="text-sm text-gray-900">{supplier.users} users</div>
+                        <div className="text-sm text-gray-500">{supplier.created}</div>
+                        <div className="flex items-center space-x-2">
+                          <Button variant="ghost" size="sm">
+                            <Edit className="w-4 h-4" />
+                          </Button>
+                          <Button variant="ghost" size="sm">
+                            <UserCheck className="w-4 h-4" />
+                          </Button>
+                        </div>
+                        <div>
+                          <Button variant="ghost" size="sm">
+                            <MoreHorizontal className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="user-supplier-mapping" className="space-y-6 mt-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>User-Supplier Mapping</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-center py-12 text-gray-500">
+                    <Users className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+                    <h3 className="text-lg font-medium text-gray-900 mb-2">User-Supplier Mapping</h3>
+                    <p>Configure which users have access to specific suppliers and their data.</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="access-control-matrix" className="space-y-6 mt-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Access Control Matrix</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-center py-12 text-gray-500">
+                    <Shield className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+                    <h3 className="text-lg font-medium text-gray-900 mb-2">Access Control Matrix</h3>
+                    <p>Define granular permissions and access levels for different user roles.</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
         </TabsContent>
 
         {/* Role Management Tab */}
