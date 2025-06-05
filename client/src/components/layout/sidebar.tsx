@@ -107,13 +107,13 @@ export function Sidebar() {
   };
 
   return (
-    <div className="w-64 bg-white border-r border-gray-200 flex flex-col shadow-sm">
+    <div className="w-64 bg-card border-r border-border flex flex-col shadow-sm">
       {/* Logo Section */}
-      <div className="flex items-center px-6 py-4 border-b border-gray-200">
-        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-sm">
+      <div className="flex items-center px-6 py-4 border-b border-border">
+        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold text-sm">
           API
         </div>
-        <span className="ml-3 text-xl font-semibold text-gray-900">ApiManager</span>
+        <span className="ml-3 text-xl font-semibold text-card-foreground">ApiManager</span>
       </div>
       
       {/* Navigation Menu */}
@@ -128,8 +128,8 @@ export function Sidebar() {
                 <div className={cn(
                   "flex items-center space-x-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors cursor-pointer",
                   isActive 
-                    ? "bg-primary text-white" 
-                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                    ? "bg-primary text-primary-foreground" 
+                    : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
                 )}>
                   <Icon className="w-5 h-5" />
                   <span>{item.name}</span>
@@ -139,8 +139,8 @@ export function Sidebar() {
           })}
         </div>
         
-        <div className="pt-6 mt-6 border-t border-gray-200">
-          <h3 className="px-3 text-xs font-medium text-gray-500 uppercase tracking-wider">AI Insights</h3>
+        <div className="pt-6 mt-6 border-t border-border">
+          <h3 className="px-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">AI Insights</h3>
           <div className="mt-2 space-y-1">
             {aiInsights.map((item) => {
               const Icon = item.icon;
@@ -151,8 +151,8 @@ export function Sidebar() {
                   <div className={cn(
                     "flex items-center space-x-3 px-3 py-2 text-sm font-medium rounded-lg transition-colors cursor-pointer",
                     isActive 
-                      ? "bg-primary text-white" 
-                      : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                      ? "bg-primary text-primary-foreground" 
+                      : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
                   )}>
                     <Icon className="w-5 h-5" />
                     <span>{item.name}</span>
