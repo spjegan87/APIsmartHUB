@@ -3,10 +3,6 @@ import { MetricsCards } from "@/components/dashboard/metrics-cards";
 import { UsageChart } from "@/components/dashboard/usage-chart";
 import { TopAPIs } from "@/components/dashboard/top-apis";
 import { RecentActivity } from "@/components/dashboard/recent-activity";
-import { HeroSection } from "@/components/landing/hero-section";
-import { ApiDetailsPanel } from "@/components/landing/api-details-panel";
-import { ApiFeaturesShowcase } from "@/components/landing/api-features-showcase";
-import { Footer } from "@/components/landing/footer";
 import { ApiTrafficOverview } from "@/components/dashboard/api-traffic-overview";
 import { ActiveUsersMonitor } from "@/components/dashboard/active-users-monitor";
 import { CredentialMonitoring } from "@/components/dashboard/credential-monitoring";
@@ -17,54 +13,12 @@ import { EnhancedBillingDashboard } from "@/components/dashboard/enhanced-billin
 
 export default function Dashboard() {
   return (
-    <div className="space-y-0">
-      {/* Hero Landing Section */}
-      <HeroSection />
+    <div className="space-y-6">
+      {/* Key Metrics Overview */}
+      <MetricsCards />
       
-      {/* Main Dashboard Content */}
-      <div className="bg-background">
-        <div className="max-w-7xl mx-auto px-6 py-12 space-y-12">
-          {/* Live API Details Panel */}
-          <div className="space-y-6">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold text-foreground mb-4">
-                Real-Time API Monitoring
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Monitor your APIs in real-time with comprehensive metrics and insights
-              </p>
-            </div>
-            <ApiDetailsPanel />
-          </div>
-
-          {/* Features Showcase */}
-          <div className="space-y-6">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold text-foreground mb-4">
-                Powerful API Management Features
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Everything you need to build, secure, and scale your APIs
-              </p>
-            </div>
-            <ApiFeaturesShowcase />
-          </div>
-
-          {/* Key Metrics Overview */}
-          <div className="space-y-6">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold text-foreground mb-4">
-                Dashboard Analytics
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Comprehensive insights into your API performance and usage
-              </p>
-            </div>
-            <MetricsCards />
-          </div>
-          
-          {/* Comprehensive Dashboard Tabs */}
-          <Tabs defaultValue="overview" className="w-full">
+      {/* Comprehensive Dashboard Tabs */}
+      <Tabs defaultValue="overview" className="w-full">
         <TabsList className="grid w-full grid-cols-7">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="traffic">API Traffic</TabsTrigger>
@@ -144,11 +98,6 @@ export default function Dashboard() {
           <EnhancedBillingDashboard />
         </TabsContent>
       </Tabs>
-          </div>
-        </div>
-      
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }
