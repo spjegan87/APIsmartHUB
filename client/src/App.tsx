@@ -8,7 +8,6 @@ import { Header } from "@/components/layout/header";
 import Dashboard from "@/pages/dashboard";
 import ApiManagement from "@/pages/api-management";
 import UserManagement from "@/pages/user-management";
-import Suppliers from "@/pages/suppliers";
 import ApiSchema from "@/pages/api-schema";
 import AccessControl from "@/pages/access-control";
 import Billing from "@/pages/billing";
@@ -24,7 +23,7 @@ const pageConfig = {
   "/": { title: "Dashboard", description: "Monitor your API performance and analytics" },
   "/api-management": { title: "API Management", description: "Manage your API endpoints and configurations" },
   "/users": { title: "User Management", description: "Manage users and their permissions" },
-  "/suppliers": { title: "Suppliers", description: "Manage supplier information and relationships" },
+
   "/schema": { title: "Schema Editor", description: "Design and validate your API schemas" },
   "/access": { title: "Access Control", description: "Configure API access permissions and security" },
   "/billing": { title: "Billing", description: "Manage your subscription and billing information" },
@@ -76,7 +75,7 @@ function Router() {
             <Route path="/" component={() => <ProtectedRoute component={Dashboard} />} />
             <Route path="/api-management" component={() => <ProtectedRoute component={ApiManagement} />} />
             <Route path="/users" component={() => <ProtectedRoute component={UserManagement} />} />
-            <Route path="/suppliers" component={() => <ProtectedRoute component={Suppliers} />} />
+
             <Route path="/schema" component={() => <ProtectedRoute component={ApiSchema} />} />
             <Route path="/access" component={() => <ProtectedRoute component={AccessControl} />} />
             <Route path="/billing" component={() => <ProtectedRoute component={Billing} />} />

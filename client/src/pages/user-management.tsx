@@ -25,7 +25,13 @@ import {
   Lightbulb,
   TrendingUp,
   Edit,
-  UserCheck
+  UserCheck,
+  Building2,
+  ChevronRight,
+  Mail,
+  Phone,
+  MapPin,
+  Globe
 } from "lucide-react";
 
 const userData = [
@@ -256,8 +262,77 @@ const supplierData = [
   }
 ];
 
+const suppliersData = [
+  {
+    id: 1,
+    name: "Acme Technologies Inc.",
+    industry: "Technology",
+    status: "Active",
+    contact: {
+      name: "Robert Wilson",
+      email: "robert@acmetech.com",
+      phone: "+1 (415) 555-1234"
+    },
+    initials: "AT",
+    avatar: "bg-blue-500",
+    address: "123 Tech Avenue, San Francisco, CA 94105",
+    website: "www.acmetech.com",
+    taxId: "12-3456789",
+    companySize: "50-200 employees",
+    yearFounded: "2018",
+    primaryService: "Cloud Infrastructure",
+    serviceArea: "North America",
+    notes: "Leading provider of cloud infrastructure solutions with strong track record in enterprise deployments. Specializes in scalable API management platforms."
+  },
+  {
+    id: 2,
+    name: "Global Solutions Ltd.",
+    industry: "Consulting",
+    status: "Pending",
+    contact: {
+      name: "Maria Garcia",
+      email: "maria@globalsolutions.com",
+      phone: "+1 (555) 987-6543"
+    },
+    initials: "GS",
+    avatar: "bg-green-500",
+    address: "456 Business Park, New York, NY 10001",
+    website: "www.globalsolutions.com",
+    taxId: "98-7654321",
+    companySize: "200-500 employees",
+    yearFounded: "2015",
+    primaryService: "Business Consulting",
+    serviceArea: "Global",
+    notes: "International consulting firm with expertise in digital transformation and API strategy implementation."
+  },
+  {
+    id: 3,
+    name: "InnovaCorp Systems",
+    industry: "Software",
+    status: "Active",
+    contact: {
+      name: "David Kim",
+      email: "david@innovacorp.com",
+      phone: "+1 (555) 123-4567"
+    },
+    initials: "IC",
+    avatar: "bg-purple-500",
+    address: "789 Innovation Drive, Austin, TX 73301",
+    website: "www.innovacorp.com",
+    taxId: "45-6789012",
+    companySize: "100-500 employees",
+    yearFounded: "2020",
+    primaryService: "Software Development",
+    serviceArea: "North America",
+    notes: "Fast-growing software development company specializing in API integration and microservices architecture."
+  }
+];
+
 export default function UserManagement() {
   const [viewMode, setViewMode] = useState("table");
+  const [selectedSupplier, setSelectedSupplier] = useState(suppliersData[0]);
+  const [supplierFilter, setSupplierFilter] = useState("all");
+  const [supplierSearch, setSupplierSearch] = useState("");
 
   const getStatusColor = (status: string) => {
     return status === "Enabled" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800";

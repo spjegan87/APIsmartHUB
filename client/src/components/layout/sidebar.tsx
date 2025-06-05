@@ -60,11 +60,6 @@ const navigation = [
     icon: Users,
   },
   {
-    name: "Suppliers",
-    href: "/suppliers",
-    icon: Building2,
-  },
-  {
     name: "Access Control",
     href: "/access",
     icon: Shield,
