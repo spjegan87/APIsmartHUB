@@ -1,12 +1,14 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Folder, FileCode, Play } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Folder, FileCode, Play, AlertCircle } from "lucide-react";
 
 export default function ApiSchema() {
-  const handleTryDemo = () => {
-    window.open('https://editor.swagger.io/', '_blank');
-  };
+  const [showDemo, setShowDemo] = useState(false);
+  const [iframeError, setIframeError] = useState(false);
   const defaultSchema = `{
   "openapi": "3.0.0",
   "info": {
@@ -63,10 +65,40 @@ export default function ApiSchema() {
             <CardTitle>API Schema Editor</CardTitle>
             <div className="flex space-x-3">
               <Button variant="outline">Import</Button>
-              <Button variant="outline" onClick={handleTryDemo}>
-                <Play className="w-4 h-4 mr-2" />
-                Try it demo
-              </Button>
+              <Dialog open={showDemo} onOpenChange={setShowDemo}>
+                <DialogTrigger asChild>
+                  <Button variant="outline">
+                    <Play className="w-4 h-4 mr-2" />
+                    Try it demo
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-6xl h-[90vh]">
+                  <DialogHeader>
+                    <DialogTitle>API Testing Demo</DialogTitle>
+                  </DialogHeader>
+                  <div className="flex-1 overflow-hidden p-4">
+                    {iframeError ? (
+                      <Alert className="mb-4">
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertDescription>
+                          Unable to load the demo interface. 
+                          Please check if the service is running and accessible from your network.
+                        </AlertDescription>
+                      </Alert>
+                    ) : null}
+                    <iframe 
+                      src="https://editor.swagger.io/" 
+                      width="100%" 
+                      height="650px" 
+                      frameBorder="0"
+                      className="rounded-lg border"
+                      onError={() => setIframeError(true)}
+                      onLoad={() => setIframeError(false)}
+                      title="API Testing Demo"
+                    />
+                  </div>
+                </DialogContent>
+              </Dialog>
               <Button>Save Schema</Button>
             </div>
           </div>
