@@ -1,6 +1,7 @@
 import { Search, Bell, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ThemeSwitch } from "@/components/theme-switcher";
 
 interface HeaderProps {
   title: string;
@@ -9,20 +10,23 @@ interface HeaderProps {
 
 export function Header({ title, description }: HeaderProps) {
   return (
-    <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+    <header className="bg-background border-b border-border px-6 py-4 flex items-center justify-between">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
-        <p className="text-sm text-gray-500">{description}</p>
+        <h1 className="text-2xl font-bold text-foreground">{title}</h1>
+        <p className="text-sm text-muted-foreground">{description}</p>
       </div>
       <div className="flex items-center space-x-4">
         {/* Search */}
         <div className="relative">
-          <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+          <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
           <Input 
             placeholder="Search APIs..." 
             className="w-64 pl-10"
           />
         </div>
+        
+        {/* Theme Switcher */}
+        <ThemeSwitch />
         
         {/* Notifications */}
         <Button variant="ghost" size="icon" className="relative">
