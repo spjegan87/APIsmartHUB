@@ -223,7 +223,7 @@ export default function ApiSchema() {
                         </Alert>
                       ) : null}
                       <iframe 
-                        src="http://3.110.166.252:8000/tryit" 
+                        src="http://apismarthub.infinitisoftware.com:8000/tryit" 
                         width="100%" 
                         height="650px" 
                         frameBorder="0"
