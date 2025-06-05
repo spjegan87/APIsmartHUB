@@ -306,10 +306,11 @@ export default function UserManagement() {
 
       {/* Main Content */}
       <Tabs defaultValue="users" className="w-full">
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className="grid w-full grid-cols-6">
           <TabsTrigger value="users">Users</TabsTrigger>
           <TabsTrigger value="super-admin">Super Admin Controls</TabsTrigger>
           <TabsTrigger value="roles">Role Management</TabsTrigger>
+          <TabsTrigger value="access-control">Access Control</TabsTrigger>
           <TabsTrigger value="activity">User Activity & Audit Log</TabsTrigger>
           <TabsTrigger value="recommendations">AI Recommendations</TabsTrigger>
         </TabsList>
@@ -705,6 +706,105 @@ export default function UserManagement() {
               </CardContent>
             </Card>
           </div>
+        </TabsContent>
+
+        {/* Access Control Tab */}
+        <TabsContent value="access-control" className="space-y-6 mt-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Permission Details</CardTitle>
+              <p className="text-sm text-gray-500">Configure granular permissions</p>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Select Role */}
+              <div>
+                <label className="text-sm font-medium text-gray-700 mb-2 block">Select Role</label>
+                <Select defaultValue="administrator">
+                  <SelectTrigger className="w-full max-w-sm">
+                    <SelectValue placeholder="Select a role" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="administrator">Administrator</SelectItem>
+                    <SelectItem value="developer">Developer</SelectItem>
+                    <SelectItem value="viewer">Viewer</SelectItem>
+                    <SelectItem value="manager">Manager</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* User Management Permissions */}
+              <div>
+                <h3 className="text-base font-medium text-gray-900 mb-4">User Management</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-700">View Users</span>
+                    <Switch defaultChecked />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-700">Create Users</span>
+                    <Switch defaultChecked />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-700">Edit Users</span>
+                    <Switch defaultChecked />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-700">Delete Users</span>
+                    <Switch defaultChecked />
+                  </div>
+                </div>
+              </div>
+
+              {/* API Management Permissions */}
+              <div>
+                <h3 className="text-base font-medium text-gray-900 mb-4">API Management</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-700">View API Keys</span>
+                    <Switch defaultChecked />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-700">Create API Keys</span>
+                    <Switch defaultChecked />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-700">Revoke API Keys</span>
+                    <Switch defaultChecked />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-700">Set Rate Limits</span>
+                    <Switch defaultChecked />
+                  </div>
+                </div>
+              </div>
+
+              {/* Analytics Permissions */}
+              <div>
+                <h3 className="text-base font-medium text-gray-900 mb-4">Analytics</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-700">View Reports</span>
+                    <Switch defaultChecked />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-700">Export Data</span>
+                    <Switch defaultChecked />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-700">Configure Alerts</span>
+                    <Switch defaultChecked />
+                  </div>
+                </div>
+              </div>
+
+              {/* Save Button */}
+              <div className="pt-4">
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                  Save Changes
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </TabsContent>
 
         {/* Activity & Audit Log Tab */}
