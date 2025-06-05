@@ -175,9 +175,8 @@ export default function Suppliers() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Suppliers List */}
-        <Card>
+      {/* Suppliers List */}
+      <Card>
           <CardContent className="p-6">
             {/* Filters */}
             <div className="flex items-center gap-4 mb-6">
@@ -320,114 +319,38 @@ export default function Suppliers() {
           </CardContent>
         </Card>
 
-        {/* Supplier Details */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Supplier Management</CardTitle>
-            <p className="text-sm text-gray-500">View and manage detailed supplier information</p>
-          </CardHeader>
-          <CardContent>
-            <Tabs defaultValue="supplier-details" className="w-full">
-              <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="supplier-details">Supplier Details</TabsTrigger>
-                <TabsTrigger value="associated-users">Associated Users</TabsTrigger>
-                <TabsTrigger value="contracts-documents">Contracts & Documents</TabsTrigger>
-              </TabsList>
+      {/* Supplier Details */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Supplier Management</CardTitle>
+          <p className="text-sm text-gray-500">View and manage detailed supplier information</p>
+        </CardHeader>
+        <CardContent>
+          <Tabs defaultValue="supplier-details" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 max-w-xl">
+              <TabsTrigger value="supplier-details">Supplier Details</TabsTrigger>
+              <TabsTrigger value="associated-users">Associated Users</TabsTrigger>
+              <TabsTrigger value="contracts-documents">Contracts & Documents</TabsTrigger>
+            </TabsList>
 
-              <TabsContent value="supplier-details" className="space-y-6 mt-6">
-                {/* Company Header */}
-                <div className="flex items-start space-x-4">
-                  <div className={`w-16 h-16 rounded-full ${selectedSupplier.avatar} flex items-center justify-center text-white font-bold text-xl`}>
-                    {selectedSupplier.initials}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900">{selectedSupplier.name}</h3>
-                    <p className="text-sm text-gray-500">Technology Provider</p>
-                    <Badge className="mt-2 bg-green-100 text-green-800">
-                      Active since Jan 2025
-                    </Badge>
-                  </div>
-                </div>
-
-                {/* Company Information */}
-                <div>
-                  <h4 className="text-base font-medium text-gray-900 mb-4">Company Information</h4>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-sm font-medium text-gray-700">Industry</label>
-                      <p className="text-sm text-gray-900">{selectedSupplier.industry}</p>
+            <TabsContent value="supplier-details" className="mt-6">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* Company Header and Info */}
+                <div className="lg:col-span-2 space-y-6">
+                  {/* Company Header */}
+                  <div className="flex items-start space-x-4">
+                    <div className={`w-16 h-16 rounded-full ${selectedSupplier.avatar} flex items-center justify-center text-white font-bold text-xl`}>
+                      {selectedSupplier.initials}
                     </div>
-                    <div>
-                      <label className="text-sm font-medium text-gray-700">Tax ID</label>
-                      <p className="text-sm text-gray-900">{selectedSupplier.taxId}</p>
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium text-gray-700">Company Size</label>
-                      <p className="text-sm text-gray-900">{selectedSupplier.companySize}</p>
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium text-gray-700">Year Founded</label>
-                      <p className="text-sm text-gray-900">{selectedSupplier.yearFounded}</p>
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium text-gray-700">Primary Service</label>
-                      <p className="text-sm text-gray-900">{selectedSupplier.primaryService}</p>
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium text-gray-700">Service Area</label>
-                      <p className="text-sm text-gray-900">{selectedSupplier.serviceArea}</p>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-gray-900">{selectedSupplier.name}</h3>
+                      <p className="text-sm text-gray-500">Technology Provider</p>
+                      <Badge className="mt-2 bg-green-100 text-green-800">
+                        Active since Jan 2025
+                      </Badge>
                     </div>
                   </div>
-                </div>
 
-                {/* Primary Contacts */}
-                <div>
-                  <h4 className="text-base font-medium text-gray-900 mb-4">Primary Contacts</h4>
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-semibold text-sm">
-                        RW
-                      </div>
-                      <div className="flex-1">
-                        <div className="font-medium text-gray-900">{selectedSupplier.contact.name}</div>
-                        <div className="text-sm text-gray-500">Chief Technology Officer</div>
-                      </div>
-                      <div className="text-sm text-gray-500">
-                        <div className="flex items-center gap-1">
-                          <Mail className="w-4 h-4" />
-                          {selectedSupplier.contact.email}
-                        </div>
-                        <div className="flex items-center gap-1 mt-1">
-                          <Phone className="w-4 h-4" />
-                          {selectedSupplier.contact.phone}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center text-white font-semibold text-sm">
-                        SL
-                      </div>
-                      <div className="flex-1">
-                        <div className="font-medium text-gray-900">Sophia Lee</div>
-                        <div className="text-sm text-gray-500">Account Manager</div>
-                      </div>
-                      <div className="text-sm text-gray-500">
-                        <div className="flex items-center gap-1">
-                          <Mail className="w-4 h-4" />
-                          sophia@acmetech.com
-                        </div>
-                        <div className="flex items-center gap-1 mt-1">
-                          <Phone className="w-4 h-4" />
-                          +1 (415) 555-2345
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Address & Contact */}
-                <div>
                   <div className="flex items-center gap-2 mb-2">
                     <MapPin className="w-4 h-4 text-gray-500" />
                     <span className="text-sm text-gray-900">{selectedSupplier.address}</span>
@@ -436,40 +359,121 @@ export default function Suppliers() {
                     <Globe className="w-4 h-4 text-gray-500" />
                     <span className="text-sm text-blue-600 hover:underline cursor-pointer">{selectedSupplier.website}</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 mb-4">
                     <Phone className="w-4 h-4 text-gray-500" />
                     <span className="text-sm text-gray-900">{selectedSupplier.contact.phone}</span>
                   </div>
+
+                  {/* Company Information */}
+                  <div>
+                    <h4 className="text-base font-medium text-gray-900 mb-4">Company Information</h4>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="text-sm font-medium text-gray-700">Industry</label>
+                        <p className="text-sm text-gray-900">{selectedSupplier.industry}</p>
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium text-gray-700">Tax ID</label>
+                        <p className="text-sm text-gray-900">{selectedSupplier.taxId}</p>
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium text-gray-700">Company Size</label>
+                        <p className="text-sm text-gray-900">{selectedSupplier.companySize}</p>
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium text-gray-700">Year Founded</label>
+                        <p className="text-sm text-gray-900">{selectedSupplier.yearFounded}</p>
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium text-gray-700">Primary Service</label>
+                        <p className="text-sm text-gray-900">{selectedSupplier.primaryService}</p>
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium text-gray-700">Service Area</label>
+                        <p className="text-sm text-gray-900">{selectedSupplier.serviceArea}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Notes */}
+                  <div>
+                    <h4 className="text-base font-medium text-gray-900 mb-4">Notes</h4>
+                    <p className="text-sm text-gray-600 bg-gray-50 p-4 rounded-lg">
+                      {selectedSupplier.notes}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Notes */}
+                {/* Primary Contacts */}
                 <div>
-                  <h4 className="text-base font-medium text-gray-900 mb-4">Notes</h4>
-                  <p className="text-sm text-gray-600 bg-gray-50 p-4 rounded-lg">
-                    {selectedSupplier.notes}
-                  </p>
+                  <h4 className="text-base font-medium text-gray-900 mb-4">Primary Contacts</h4>
+                  <div className="space-y-4">
+                    <div className="border rounded-lg p-4">
+                      <div className="flex items-center space-x-3 mb-3">
+                        <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-semibold text-sm">
+                          RW
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-medium text-gray-900">{selectedSupplier.contact.name}</div>
+                          <div className="text-sm text-gray-500">Chief Technology Officer</div>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          <Mail className="w-4 h-4 text-gray-400" />
+                          <span className="text-sm text-gray-600">{selectedSupplier.contact.email}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Phone className="w-4 h-4 text-gray-400" />
+                          <span className="text-sm text-gray-600">{selectedSupplier.contact.phone}</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="border rounded-lg p-4">
+                      <div className="flex items-center space-x-3 mb-3">
+                        <div className="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center text-white font-semibold text-sm">
+                          SL
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-medium text-gray-900">Sophia Lee</div>
+                          <div className="text-sm text-gray-500">Account Manager</div>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          <Mail className="w-4 h-4 text-gray-400" />
+                          <span className="text-sm text-gray-600">sophia@acmetech.com</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Phone className="w-4 h-4 text-gray-400" />
+                          <span className="text-sm text-gray-600">+1 (415) 555-2345</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </TabsContent>
+              </div>
+            </TabsContent>
 
-              <TabsContent value="associated-users" className="space-y-6 mt-6">
-                <div className="text-center py-12 text-gray-500">
-                  <Building2 className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">Associated Users</h3>
-                  <p>View and manage users associated with this supplier.</p>
-                </div>
-              </TabsContent>
+            <TabsContent value="associated-users" className="space-y-6 mt-6">
+              <div className="text-center py-12 text-gray-500">
+                <Building2 className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+                <h3 className="text-lg font-medium text-gray-900 mb-2">Associated Users</h3>
+                <p>View and manage users associated with this supplier.</p>
+              </div>
+            </TabsContent>
 
-              <TabsContent value="contracts-documents" className="space-y-6 mt-6">
-                <div className="text-center py-12 text-gray-500">
-                  <Building2 className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">Contracts & Documents</h3>
-                  <p>Manage contracts and documents for this supplier.</p>
-                </div>
-              </TabsContent>
-            </Tabs>
-          </CardContent>
-        </Card>
-      </div>
+            <TabsContent value="contracts-documents" className="space-y-6 mt-6">
+              <div className="text-center py-12 text-gray-500">
+                <Building2 className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+                <h3 className="text-lg font-medium text-gray-900 mb-2">Contracts & Documents</h3>
+                <p>Manage contracts and documents for this supplier.</p>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </CardContent>
+      </Card>
     </div>
   );
 }
