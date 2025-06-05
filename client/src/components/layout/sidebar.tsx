@@ -96,7 +96,6 @@ export function Sidebar() {
     email: "john@company.com",
     role: "Administrator",
   });
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
