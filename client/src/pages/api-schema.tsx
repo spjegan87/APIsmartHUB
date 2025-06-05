@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Folder, FileCode } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Folder, FileCode, Play } from "lucide-react";
 
 export default function ApiSchema() {
+  const [showDemo, setShowDemo] = useState(false);
   const defaultSchema = `{
   "openapi": "3.0.0",
   "info": {
@@ -60,6 +63,28 @@ export default function ApiSchema() {
             <CardTitle>API Schema Editor</CardTitle>
             <div className="flex space-x-3">
               <Button variant="outline">Import</Button>
+              <Dialog open={showDemo} onOpenChange={setShowDemo}>
+                <DialogTrigger asChild>
+                  <Button variant="outline">
+                    <Play className="w-4 h-4 mr-2" />
+                    Try it demo
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-6xl h-[90vh]">
+                  <DialogHeader>
+                    <DialogTitle>API Testing Demo</DialogTitle>
+                  </DialogHeader>
+                  <div className="flex-1 overflow-hidden">
+                    <iframe 
+                      src="http://192.168.31.187:8000/tryit" 
+                      width="100%" 
+                      height="700px" 
+                      frameBorder="0"
+                      className="rounded-lg border"
+                    />
+                  </div>
+                </DialogContent>
+              </Dialog>
               <Button>Save Schema</Button>
             </div>
           </div>
