@@ -22,6 +22,8 @@ import {
   Volume2,
   ChevronDown,
   Building2,
+  Menu,
+  X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -84,7 +86,12 @@ const aiInsights = [
   },
 ];
 
-export function Sidebar() {
+interface SidebarProps {
+  isMobileOpen?: boolean;
+  onMobileClose?: () => void;
+}
+
+export function Sidebar({ isMobileOpen = false, onMobileClose }: SidebarProps) {
   const [location] = useLocation();
   const [, setLocation] = useLocation();
   const [theme, setTheme] = useState("light");
@@ -111,16 +118,38 @@ export function Sidebar() {
   };
 
   return (
-    <div className="w-64 bg-card border-r border-border flex flex-col shadow-sm">
-      {/* Logo Section */}
-      <div className="flex items-center px-6 py-4 border-b border-border">
-        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold text-sm">
-          API
+    <>
+      {/* Mobile Overlay */}
+      {isMobileOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          onClick={onMobileClose}
+        />
+      )}
+      
+      {/* Sidebar */}
+      <div className={cn(
+        "fixed lg:static inset-y-0 left-0 z-50 w-64 bg-card border-r border-border flex flex-col shadow-sm transform transition-transform duration-200 ease-in-out lg:translate-x-0",
+        isMobileOpen ? "translate-x-0" : "-translate-x-full"
+      )}>
+        {/* Logo Section */}
+        <div className="flex items-center px-4 sm:px-6 py-4 border-b border-border">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold text-xs sm:text-sm">
+            API
+          </div>
+          <span className="ml-2 sm:ml-3 text-lg sm:text-xl font-semibold text-card-foreground truncate">
+            APIsmartHUB
+          </span>
+          {/* Mobile Close Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="ml-auto lg:hidden"
+            onClick={onMobileClose}
+          >
+            <X className="w-5 h-5" />
+          </Button>
         </div>
-        <span className="ml-3 text-xl font-semibold text-card-foreground">
-          APIsmartHUB
-        </span>
-      </div>
 
       {/* Navigation Menu */}
       <nav className="flex-1 px-4 py-6 space-y-2">
@@ -196,8 +225,7 @@ export function Sidebar() {
           </Button>
         </div>
       </div>
-
-
-    </div>
+      </div>
+    </>
   );
 }
