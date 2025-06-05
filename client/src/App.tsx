@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
 import Dashboard from "@/pages/dashboard";
+import ApiManagement from "@/pages/api-management";
 import UserManagement from "@/pages/user-management";
 import ApiSchema from "@/pages/api-schema";
 import AccessControl from "@/pages/access-control";
@@ -18,6 +19,7 @@ import { useLocation } from "wouter";
 
 const pageConfig = {
   "/": { title: "Dashboard", description: "Monitor your API performance and analytics" },
+  "/api-management": { title: "API Management", description: "Manage your API endpoints and configurations" },
   "/users": { title: "User Management", description: "Manage users and their permissions" },
   "/schema": { title: "Schema Editor", description: "Design and validate your API schemas" },
   "/access": { title: "Access Control", description: "Configure API access permissions and security" },
@@ -25,7 +27,6 @@ const pageConfig = {
   "/docs": { title: "Documentation", description: "API documentation and guides" },
   "/monitoring": { title: "Monitoring", description: "Real-time API monitoring and alerts" },
   "/insights": { title: "AI Insights", description: "AI-powered performance insights and analytics" },
-  "/apis": { title: "API Management", description: "Manage your API endpoints and configurations" },
   "/recommendations": { title: "Recommendations", description: "AI-generated optimization recommendations" }
 };
 
@@ -41,6 +42,7 @@ function Router() {
         <main className="flex-1 overflow-y-auto p-6">
           <Switch>
             <Route path="/" component={Dashboard} />
+            <Route path="/api-management" component={ApiManagement} />
             <Route path="/users" component={UserManagement} />
             <Route path="/schema" component={ApiSchema} />
             <Route path="/access" component={AccessControl} />
@@ -48,7 +50,6 @@ function Router() {
             <Route path="/docs" component={Documentation} />
             <Route path="/monitoring" component={Monitoring} />
             <Route path="/insights" component={AIInsights} />
-            <Route path="/apis" component={Dashboard} />
             <Route path="/recommendations" component={AIInsights} />
             <Route component={NotFound} />
           </Switch>

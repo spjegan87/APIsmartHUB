@@ -22,7 +22,7 @@ const navigation = [
   },
   {
     name: "API Management", 
-    href: "/apis",
+    href: "/api-management",
     icon: Code,
   },
   {
