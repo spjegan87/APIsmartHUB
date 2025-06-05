@@ -318,6 +318,559 @@ export default function Documentation() {
           </div>
         );
 
+      case "getting-started":
+        return (
+          <div className="space-y-8">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">Getting Started</h1>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                Get up and running with our API in just a few minutes. This guide will walk you through the basics of making your first API call.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Quick Start</h2>
+              <div className="space-y-4">
+                <div className="flex items-start gap-4 p-4 bg-blue-50 rounded-lg">
+                  <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                  <div>
+                    <h3 className="font-medium text-gray-900">Get your API key</h3>
+                    <p className="text-sm text-gray-600">Sign up for an account and retrieve your API key from the dashboard.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4 p-4 bg-blue-50 rounded-lg">
+                  <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                  <div>
+                    <h3 className="font-medium text-gray-900">Make your first request</h3>
+                    <p className="text-sm text-gray-600">Use your API key to authenticate and make your first API call.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4 p-4 bg-blue-50 rounded-lg">
+                  <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                  <div>
+                    <h3 className="font-medium text-gray-900">Handle the response</h3>
+                    <p className="text-sm text-gray-600">Process the JSON response and integrate the data into your application.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Your First API Call</h2>
+              <p className="text-gray-600 mb-4">Here's a simple example to get you started:</p>
+              <div className="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-sm"><code>{`curl -X GET "https://api.example.com/v1/users" \\
+  -H "Authorization: Bearer your_api_key_here" \\
+  -H "Content-Type: application/json"`}</code></pre>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">SDK and Libraries</h2>
+              <p className="text-gray-600 mb-4">We provide official SDKs for popular programming languages:</p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-4 border rounded-lg">
+                  <h3 className="font-medium text-gray-900">JavaScript/Node.js</h3>
+                  <code className="text-sm text-gray-600">npm install @example/api-client</code>
+                </div>
+                <div className="p-4 border rounded-lg">
+                  <h3 className="font-medium text-gray-900">Python</h3>
+                  <code className="text-sm text-gray-600">pip install example-api-client</code>
+                </div>
+                <div className="p-4 border rounded-lg">
+                  <h3 className="font-medium text-gray-900">PHP</h3>
+                  <code className="text-sm text-gray-600">composer require example/api-client</code>
+                </div>
+                <div className="p-4 border rounded-lg">
+                  <h3 className="font-medium text-gray-900">Ruby</h3>
+                  <code className="text-sm text-gray-600">gem install example-api-client</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case "organizations":
+        return (
+          <div className="space-y-8">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">Organizations</h1>
+              <p className="text-gray-600 leading-relaxed">
+                Organizations allow you to group users and manage resources collectively. Each organization has its own settings, billing, and access controls.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">List Organizations</h2>
+              <div className="flex items-center gap-2 mb-4">
+                <Badge className="bg-green-100 text-green-800">GET</Badge>
+                <code className="bg-gray-100 px-2 py-1 rounded">/organizations</code>
+              </div>
+              <p className="text-gray-600 mb-6">Retrieve a list of organizations you have access to.</p>
+
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium text-gray-900">Response</h3>
+                <div className="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto">
+                  <pre className="text-sm"><code>{`{
+  "data": [
+    {
+      "id": "org_123",
+      "name": "Acme Corporation",
+      "slug": "acme-corp",
+      "plan": "enterprise",
+      "status": "active",
+      "created_at": "2025-01-01T00:00:00Z",
+      "settings": {
+        "billing_email": "billing@acme.com",
+        "technical_contact": "tech@acme.com"
+      }
+    }
+  ]
+}`}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Create Organization</h2>
+              <div className="flex items-center gap-2 mb-4">
+                <Badge className="bg-blue-100 text-blue-800">POST</Badge>
+                <code className="bg-gray-100 px-2 py-1 rounded">/organizations</code>
+              </div>
+              <p className="text-gray-600 mb-6">Create a new organization.</p>
+
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium text-gray-900">Request Body</h3>
+                <div className="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto">
+                  <pre className="text-sm"><code>{`{
+  "name": "New Organization",
+  "slug": "new-org",
+  "billing_email": "billing@neworg.com",
+  "plan": "professional"
+}`}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Organization Members</h2>
+              <div className="flex items-center gap-2 mb-4">
+                <Badge className="bg-green-100 text-green-800">GET</Badge>
+                <code className="bg-gray-100 px-2 py-1 rounded">/organizations/{`{id}`}/members</code>
+              </div>
+              <p className="text-gray-600 mb-6">List all members of an organization.</p>
+            </div>
+          </div>
+        );
+
+      case "billing":
+        return (
+          <div className="space-y-8">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">Billing</h1>
+              <p className="text-gray-600 leading-relaxed">
+                Manage billing information, subscriptions, and usage data for your organization.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Get Billing Information</h2>
+              <div className="flex items-center gap-2 mb-4">
+                <Badge className="bg-green-100 text-green-800">GET</Badge>
+                <code className="bg-gray-100 px-2 py-1 rounded">/billing</code>
+              </div>
+              <p className="text-gray-600 mb-6">Retrieve current billing information and subscription details.</p>
+
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium text-gray-900">Response</h3>
+                <div className="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto">
+                  <pre className="text-sm"><code>{`{
+  "subscription": {
+    "id": "sub_123",
+    "plan": "professional",
+    "status": "active",
+    "current_period_start": "2025-01-01T00:00:00Z",
+    "current_period_end": "2025-02-01T00:00:00Z",
+    "amount": 9900,
+    "currency": "usd"
+  },
+  "usage": {
+    "api_calls": {
+      "used": 150000,
+      "limit": 1000000,
+      "overage": 0
+    },
+    "storage": {
+      "used": 2048,
+      "limit": 10240,
+      "unit": "mb"
+    }
+  },
+  "next_invoice": {
+    "amount_due": 9900,
+    "due_date": "2025-02-01T00:00:00Z"
+  }
+}`}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Update Payment Method</h2>
+              <div className="flex items-center gap-2 mb-4">
+                <Badge className="bg-yellow-100 text-yellow-800">PUT</Badge>
+                <code className="bg-gray-100 px-2 py-1 rounded">/billing/payment-method</code>
+              </div>
+              <p className="text-gray-600 mb-6">Update the default payment method for your subscription.</p>
+
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium text-gray-900">Request Body</h3>
+                <div className="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto">
+                  <pre className="text-sm"><code>{`{
+  "token": "tok_visa_1234",
+  "type": "card"
+}`}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">List Invoices</h2>
+              <div className="flex items-center gap-2 mb-4">
+                <Badge className="bg-green-100 text-green-800">GET</Badge>
+                <code className="bg-gray-100 px-2 py-1 rounded">/billing/invoices</code>
+              </div>
+              <p className="text-gray-600 mb-6">Retrieve a list of all invoices for your organization.</p>
+            </div>
+          </div>
+        );
+
+      case "analytics":
+        return (
+          <div className="space-y-8">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">Analytics</h1>
+              <p className="text-gray-600 leading-relaxed">
+                Access detailed analytics and metrics about your API usage, performance, and user behavior.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Get Usage Analytics</h2>
+              <div className="flex items-center gap-2 mb-4">
+                <Badge className="bg-green-100 text-green-800">GET</Badge>
+                <code className="bg-gray-100 px-2 py-1 rounded">/analytics/usage</code>
+              </div>
+              <p className="text-gray-600 mb-6">Get detailed usage statistics for your API calls.</p>
+
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium text-gray-900">Parameters</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full border border-gray-200 rounded-lg">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">Parameter</th>
+                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">Type</th>
+                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                      <tr>
+                        <td className="px-4 py-2 text-sm font-mono">start_date</td>
+                        <td className="px-4 py-2 text-sm">string</td>
+                        <td className="px-4 py-2 text-sm">Start date for analytics (ISO 8601 format)</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-2 text-sm font-mono">end_date</td>
+                        <td className="px-4 py-2 text-sm">string</td>
+                        <td className="px-4 py-2 text-sm">End date for analytics (ISO 8601 format)</td>
+                      </tr>
+                      <tr>
+                        <td className="px-4 py-2 text-sm font-mono">granularity</td>
+                        <td className="px-4 py-2 text-sm">string</td>
+                        <td className="px-4 py-2 text-sm">Data granularity (hour, day, week, month)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div className="space-y-4 mt-6">
+                <h3 className="text-lg font-medium text-gray-900">Response</h3>
+                <div className="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto">
+                  <pre className="text-sm"><code>{`{
+  "data": [
+    {
+      "timestamp": "2025-01-15T00:00:00Z",
+      "total_requests": 1250,
+      "successful_requests": 1180,
+      "failed_requests": 70,
+      "average_response_time": 145,
+      "bandwidth_used": 2048576
+    }
+  ],
+  "summary": {
+    "total_requests": 45000,
+    "success_rate": 94.4,
+    "average_response_time": 132
+  }
+}`}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Get Error Analytics</h2>
+              <div className="flex items-center gap-2 mb-4">
+                <Badge className="bg-green-100 text-green-800">GET</Badge>
+                <code className="bg-gray-100 px-2 py-1 rounded">/analytics/errors</code>
+              </div>
+              <p className="text-gray-600 mb-6">Analyze error patterns and trends in your API usage.</p>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Get Performance Metrics</h2>
+              <div className="flex items-center gap-2 mb-4">
+                <Badge className="bg-green-100 text-green-800">GET</Badge>
+                <code className="bg-gray-100 px-2 py-1 rounded">/analytics/performance</code>
+              </div>
+              <p className="text-gray-600 mb-6">Get detailed performance metrics including response times and throughput.</p>
+            </div>
+          </div>
+        );
+
+      case "webhooks":
+        return (
+          <div className="space-y-8">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">Webhooks</h1>
+              <p className="text-gray-600 leading-relaxed">
+                Webhooks allow you to receive real-time notifications when specific events occur in your account.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Create Webhook</h2>
+              <div className="flex items-center gap-2 mb-4">
+                <Badge className="bg-blue-100 text-blue-800">POST</Badge>
+                <code className="bg-gray-100 px-2 py-1 rounded">/webhooks</code>
+              </div>
+              <p className="text-gray-600 mb-6">Create a new webhook endpoint to receive event notifications.</p>
+
+              <div className="space-y-4">
+                <h3 className="text-lg font-medium text-gray-900">Request Body</h3>
+                <div className="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto">
+                  <pre className="text-sm"><code>{`{
+  "url": "https://your-app.com/webhooks",
+  "events": [
+    "user.created",
+    "user.updated",
+    "user.deleted",
+    "billing.subscription.updated"
+  ],
+  "description": "Main webhook endpoint",
+  "active": true
+}`}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Webhook Events</h2>
+              <p className="text-gray-600 mb-4">Available webhook events that you can subscribe to:</p>
+              <div className="overflow-x-auto">
+                <table className="w-full border border-gray-200 rounded-lg">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">Event</th>
+                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr>
+                      <td className="px-4 py-2 text-sm font-mono">user.created</td>
+                      <td className="px-4 py-2 text-sm">Triggered when a new user is created</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 text-sm font-mono">user.updated</td>
+                      <td className="px-4 py-2 text-sm">Triggered when user information is updated</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 text-sm font-mono">billing.subscription.updated</td>
+                      <td className="px-4 py-2 text-sm">Triggered when subscription changes</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 text-sm font-mono">api.usage.threshold</td>
+                      <td className="px-4 py-2 text-sm">Triggered when usage thresholds are reached</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Webhook Payload</h2>
+              <p className="text-gray-600 mb-4">Example webhook payload structure:</p>
+              <div className="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-sm"><code>{`{
+  "id": "evt_123",
+  "type": "user.created",
+  "created": "2025-01-15T10:30:00Z",
+  "data": {
+    "object": {
+      "id": "user_456",
+      "email": "john@example.com",
+      "name": "John Doe",
+      "status": "active"
+    }
+  }
+}`}</code></pre>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Webhook Security</h2>
+              <p className="text-gray-600 mb-4">
+                We sign webhook payloads with a secret key. Verify the signature to ensure the webhook is from us.
+              </p>
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Shield className="w-4 h-4 text-yellow-600" />
+                  <span className="font-medium text-yellow-800">Security Note</span>
+                </div>
+                <p className="text-yellow-700">
+                  Always verify webhook signatures to prevent malicious requests.
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+
+      case "rate-limiting":
+        return (
+          <div className="space-y-8">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">Rate Limiting</h1>
+              <p className="text-gray-600 leading-relaxed">
+                Our API implements rate limiting to ensure fair usage and maintain service quality for all users.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Rate Limit Headers</h2>
+              <p className="text-gray-600 mb-4">
+                Every API response includes headers with your current rate limit status:
+              </p>
+              <div className="overflow-x-auto">
+                <table className="w-full border border-gray-200 rounded-lg">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">Header</th>
+                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr>
+                      <td className="px-4 py-2 text-sm font-mono">X-RateLimit-Limit</td>
+                      <td className="px-4 py-2 text-sm">The maximum number of requests allowed per window</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 text-sm font-mono">X-RateLimit-Remaining</td>
+                      <td className="px-4 py-2 text-sm">The number of requests remaining in the current window</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 text-sm font-mono">X-RateLimit-Reset</td>
+                      <td className="px-4 py-2 text-sm">Unix timestamp when the rate limit window resets</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Rate Limits by Plan</h2>
+              <div className="overflow-x-auto">
+                <table className="w-full border border-gray-200 rounded-lg">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">Plan</th>
+                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">Rate Limit</th>
+                      <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">Window</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr>
+                      <td className="px-4 py-2 text-sm">Free</td>
+                      <td className="px-4 py-2 text-sm">1,000 requests</td>
+                      <td className="px-4 py-2 text-sm">1 hour</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 text-sm">Starter</td>
+                      <td className="px-4 py-2 text-sm">10,000 requests</td>
+                      <td className="px-4 py-2 text-sm">1 hour</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 text-sm">Professional</td>
+                      <td className="px-4 py-2 text-sm">100,000 requests</td>
+                      <td className="px-4 py-2 text-sm">1 hour</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2 text-sm">Enterprise</td>
+                      <td className="px-4 py-2 text-sm">Custom limits</td>
+                      <td className="px-4 py-2 text-sm">Configurable</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Handling Rate Limits</h2>
+              <p className="text-gray-600 mb-4">
+                When you exceed your rate limit, you'll receive a 429 status code:
+              </p>
+              <div className="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto">
+                <pre className="text-sm"><code>{`HTTP/1.1 429 Too Many Requests
+X-RateLimit-Limit: 1000
+X-RateLimit-Remaining: 0
+X-RateLimit-Reset: 1642694400
+
+{
+  "error": {
+    "code": "rate_limit_exceeded",
+    "message": "Rate limit exceeded. Try again later.",
+    "retry_after": 3600
+  }
+}`}</code></pre>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Best Practices</h2>
+              <div className="space-y-4">
+                <div className="p-4 bg-blue-50 rounded-lg">
+                  <h3 className="font-medium text-gray-900 mb-2">Implement Exponential Backoff</h3>
+                  <p className="text-sm text-gray-600">
+                    When you receive a 429 response, wait before retrying. Use exponential backoff to avoid overwhelming the API.
+                  </p>
+                </div>
+                <div className="p-4 bg-blue-50 rounded-lg">
+                  <h3 className="font-medium text-gray-900 mb-2">Monitor Rate Limit Headers</h3>
+                  <p className="text-sm text-gray-600">
+                    Check the rate limit headers in every response to track your usage and prevent hitting limits.
+                  </p>
+                </div>
+                <div className="p-4 bg-blue-50 rounded-lg">
+                  <h3 className="font-medium text-gray-900 mb-2">Cache Responses</h3>
+                  <p className="text-sm text-gray-600">
+                    Cache API responses when possible to reduce the number of requests needed.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
       case "errors":
         return (
           <div className="space-y-8">
@@ -407,9 +960,15 @@ export default function Documentation() {
         return (
           <div className="space-y-8">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">Getting Started</h1>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">API Documentation</h1>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <p className="text-blue-800">
+                  Welcome to the APISIX Manager API documentation. This comprehensive guide will help you integrate our API into your applications efficiently.
+                </p>
+              </div>
               <p className="text-gray-600 leading-relaxed">
-                Get up and running with our API in just a few minutes.
+                Our REST API enables you to programmatically manage users, organizations, billing, and analytics. 
+                All API endpoints are accessed via HTTPS and are located at <code className="bg-gray-100 px-2 py-1 rounded">api.example.com</code>.
               </p>
             </div>
           </div>
