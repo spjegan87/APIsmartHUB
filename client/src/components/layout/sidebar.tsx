@@ -186,6 +186,12 @@ export function Sidebar() {
           </Button>
         </div>
       </div>
+      
+      {/* Settings Panel */}
+      <SettingsPanel 
+        isOpen={isSettingsOpen} 
+        onClose={() => setIsSettingsOpen(false)} 
+      />
     </div>
   );
 }
