@@ -81,13 +81,13 @@ export default function ApiSchema() {
                       <Alert className="mb-4">
                         <AlertCircle className="h-4 w-4" />
                         <AlertDescription>
-                          Unable to load the demo interface from http://192.168.31.187:8000/tryit. 
+                          Unable to load the demo interface. 
                           Please check if the service is running and accessible from your network.
                         </AlertDescription>
                       </Alert>
                     ) : null}
                     <iframe 
-                      src="http://192.168.31.187:8000/tryit" 
+                      src="https://editor.swagger.io/" 
                       width="100%" 
                       height="650px" 
                       frameBorder="0"
