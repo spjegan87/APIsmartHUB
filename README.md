@@ -283,12 +283,32 @@ npm run build
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 👥 Development Team
+
+APIsmartHUB is built by a dedicated team of professionals at Infiniti Software:
+
+| Name | Role | Specialization |
+|------|------|---------------|
+| **Thameen Ansari** | Product Development | Frontend & Backend Development |
+| **Jegan SP** | Product Development | Full-Stack Development |
+| **Nagarajan** | Business & Product | Product Strategy & Business Development |
+| **Manivannan** | Infrastructure Support | DevOps & System Administration |
+| **Karthick Pulavendhan** | Product Development | Software Engineering |
+| **Indira** | Product Development | UI/UX & Frontend Development |
+
 ## 🏢 About Infiniti Software
 
-APIsmartHUB is developed by Infiniti Software, specializing in enterprise-grade API management solutions.
+APIsmartHUB is developed by Infiniti Software, specializing in enterprise-grade API management solutions. Our team combines deep technical expertise with business acumen to deliver cutting-edge solutions for modern API management challenges.
+
+### Our Expertise
+- Enterprise API Management
+- Cloud-Native Applications
+- AI-Powered Analytics
+- Scalable Infrastructure Solutions
+- User Experience Design
 
 ---
 
 **Version**: 1.0.0  
 **Last Updated**: June 2025  
-**Maintained by**: Infiniti Software Development Team
+**Developed by**: Infiniti Software Development Team
