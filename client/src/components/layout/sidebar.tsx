@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { SettingsPanel } from "@/components/settings-panel";
 import { 
   DropdownMenu, 
   DropdownMenuContent, 
@@ -92,6 +93,7 @@ export function Sidebar() {
   const [largeText, setLargeText] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [user, setUser] = useState({ name: "John Doe", email: "john@company.com", role: "Administrator" });
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
@@ -174,105 +176,14 @@ export function Sidebar() {
             <p className="text-sm font-medium text-gray-900">{user.name}</p>
             <p className="text-xs text-gray-500">{user.email}</p>
           </div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="text-gray-400 hover:text-gray-600 p-1">
-                <Settings className="w-4 h-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-64">
-              <DropdownMenuLabel>
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white text-xs font-medium">
-                    JD
-                  </div>
-                  <div>
-                    <p className="font-medium">{user.name}</p>
-                    <p className="text-xs text-gray-500">{user.role}</p>
-                  </div>
-                </div>
-              </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              
-              <DropdownMenuItem>
-                <User className="w-4 h-4 mr-2" />
-                Profile Settings
-              </DropdownMenuItem>
-              
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger>
-                  <Monitor className="w-4 h-4 mr-2" />
-                  Theme
-                </DropdownMenuSubTrigger>
-                <DropdownMenuSubContent>
-                  <DropdownMenuItem onClick={() => setTheme("light")}>
-                    <Sun className="w-4 h-4 mr-2" />
-                    Light
-                    {theme === "light" && <div className="w-2 h-2 bg-primary rounded-full ml-auto" />}
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("dark")}>
-                    <Moon className="w-4 h-4 mr-2" />
-                    Dark
-                    {theme === "dark" && <div className="w-2 h-2 bg-primary rounded-full ml-auto" />}
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("system")}>
-                    <Monitor className="w-4 h-4 mr-2" />
-                    System
-                    {theme === "system" && <div className="w-2 h-2 bg-primary rounded-full ml-auto" />}
-                  </DropdownMenuItem>
-                </DropdownMenuSubContent>
-              </DropdownMenuSub>
-
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger>
-                  <Accessibility className="w-4 h-4 mr-2" />
-                  Accessibility
-                </DropdownMenuSubTrigger>
-                <DropdownMenuSubContent>
-                  <DropdownMenuItem className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <Eye className="w-4 h-4 mr-2" />
-                      High Contrast
-                    </div>
-                    <Switch 
-                      checked={highContrast}
-                      onCheckedChange={setHighContrast}
-                      className="ml-2"
-                    />
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <Monitor className="w-4 h-4 mr-2" />
-                      Large Text
-                    </div>
-                    <Switch 
-                      checked={largeText}
-                      onCheckedChange={setLargeText}
-                      className="ml-2"
-                    />
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <Volume2 className="w-4 h-4 mr-2" />
-                      Sound Effects
-                    </div>
-                    <Switch 
-                      checked={soundEnabled}
-                      onCheckedChange={setSoundEnabled}
-                      className="ml-2"
-                    />
-                  </DropdownMenuItem>
-                </DropdownMenuSubContent>
-              </DropdownMenuSub>
-
-              <DropdownMenuSeparator />
-              
-              <DropdownMenuItem className="text-red-600" onClick={handleLogout}>
-                <LogOut className="w-4 h-4 mr-2" />
-                Sign Out
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="text-muted-foreground hover:text-foreground p-1"
+            onClick={() => setIsSettingsOpen(true)}
+          >
+            <Settings className="w-4 h-4" />
+          </Button>
         </div>
       </div>
     </div>
