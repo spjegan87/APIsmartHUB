@@ -20,7 +20,8 @@ import {
   Accessibility,
   Eye,
   Volume2,
-  ChevronDown
+  ChevronDown,
+  Building2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -57,6 +58,11 @@ const navigation = [
     name: "User Management",
     href: "/users", 
     icon: Users,
+  },
+  {
+    name: "Suppliers",
+    href: "/suppliers",
+    icon: Building2,
   },
   {
     name: "Access Control",
