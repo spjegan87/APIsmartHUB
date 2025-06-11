@@ -1,6 +1,6 @@
 {
   "packageId": "com.infinitisoftware.apismarthub",
-  "host": "apismarthub.infinitisoftware.com",
+  "host": "apismarthub.infinitisoftware.com:8000",
   "name": "APIsmartHUB",
   "launcherName": "APIsmartHUB",
   "display": "standalone",
@@ -33,20 +33,9 @@
           "sizes": "96x96"
         }
       ]
-    },
-    {
-      "name": "User Management",
-      "short_name": "Users",
-      "url": "/users",
-      "icons": [
-        {
-          "src": "http://apismarthub.infinitisoftware.com:8000/icon-96.png",
-          "sizes": "96x96"
-        }
-      ]
     }
   ],
-  "generatorApp": "bubblewrap-cli",
+  "generatorApp": "custom-script",
   "webManifestUrl": "http://apismarthub.infinitisoftware.com:8000/manifest.json",
   "fallbackType": "customtabs",
   "features": {
@@ -62,10 +51,6 @@
   },
   "enableNotifications": true,
   "splashScreenFadeOutDuration": 300,
-  "signingKey": {
-    "path": "./apismarthub-release-key.keystore",
-    "alias": "apismarthub"
-  },
   "appVersionName": "1.0.0",
   "appVersionCode": 1
 }
