@@ -1,0 +1,71 @@
+{
+  "packageId": "com.infinitisoftware.apismarthub",
+  "host": "apismarthub.infinitisoftware.com",
+  "name": "APIsmartHUB",
+  "launcherName": "APIsmartHUB",
+  "display": "standalone",
+  "orientation": "default",
+  "themeColor": "#2563eb",
+  "backgroundColor": "#ffffff",
+  "startUrl": "/",
+  "iconUrl": "http://apismarthub.infinitisoftware.com:8000/icon-512.png",
+  "maskableIconUrl": "http://apismarthub.infinitisoftware.com:8000/icon-512.png",
+  "monochromeIconUrl": "http://apismarthub.infinitisoftware.com:8000/icon-512.png",
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "url": "/",
+      "icons": [
+        {
+          "src": "http://apismarthub.infinitisoftware.com:8000/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "API Management",
+      "short_name": "APIs",
+      "url": "/api-management",
+      "icons": [
+        {
+          "src": "http://apismarthub.infinitisoftware.com:8000/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "User Management",
+      "short_name": "Users",
+      "url": "/users",
+      "icons": [
+        {
+          "src": "http://apismarthub.infinitisoftware.com:8000/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "http://apismarthub.infinitisoftware.com:8000/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": {
+      "enabled": false
+    },
+    "playBilling": {
+      "enabled": false
+    }
+  },
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableNotifications": true,
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./apismarthub-release-key.keystore",
+    "alias": "apismarthub"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1
+}
