@@ -26,6 +26,8 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
+  BarChart3,
+  TrendingUp,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -73,10 +75,23 @@ const navigation = [
     href: "/billing",
     icon: CreditCard,
   },
+];
+
+const analyticsNavigation = [
+  {
+    name: "API Analytics",
+    href: "/analytics/api",
+    icon: BarChart3,
+  },
   {
     name: "Monitoring",
     href: "/monitoring",
     icon: Activity,
+  },
+  {
+    name: "Performance",
+    href: "/analytics/performance",
+    icon: TrendingUp,
   },
 ];
 
@@ -235,60 +250,117 @@ export function Sidebar({ isMobileOpen = false, onMobileClose }: SidebarProps) {
           </div>
 
           {!isCollapsed && (
-            <div className="pt-6 mt-6 border-t border-[#3A4A99]">
-              <h3 className="px-4 text-xs font-semibold text-white/60 uppercase tracking-wider">
-                AI Insights
-              </h3>
-              <div className="mt-3 space-y-1">
-                {aiInsights.map((item) => {
-                  const Icon = item.icon;
-                  const isActive = location === item.href;
+            <>
+              <div className="pt-6 mt-6 border-t border-[#3A4A99]">
+                <h3 className="px-4 text-xs font-semibold text-white/60 uppercase tracking-wider">
+                  Analytics
+                </h3>
+                <div className="mt-3 space-y-1">
+                  {analyticsNavigation.map((item) => {
+                    const Icon = item.icon;
+                    const isActive = location === item.href;
 
-                  return (
-                    <Link key={item.name} href={item.href}>
-                      <div
-                        className={cn(
-                          "flex items-center px-4 py-3 text-base font-medium rounded-lg transition-all duration-200 cursor-pointer space-x-3",
-                          isActive
-                            ? "bg-white text-[#2D3B87] shadow-sm"
-                            : "text-white/80 hover:bg-[#3A4A99] hover:text-white"
-                        )}
-                      >
-                        <Icon className="w-5 h-5" />
-                        <span className="font-medium">{item.name}</span>
-                      </div>
-                    </Link>
-                  );
-                })}
+                    return (
+                      <Link key={item.name} href={item.href}>
+                        <div
+                          className={cn(
+                            "flex items-center px-4 py-3 text-base font-medium rounded-lg transition-all duration-200 cursor-pointer space-x-3",
+                            isActive
+                              ? "bg-white text-[#2D3B87] shadow-sm"
+                              : "text-white/80 hover:bg-[#3A4A99] hover:text-white"
+                          )}
+                        >
+                          <Icon className="w-5 h-5" />
+                          <span className="font-medium">{item.name}</span>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+
+              <div className="pt-6 mt-6 border-t border-[#3A4A99]">
+                <h3 className="px-4 text-xs font-semibold text-white/60 uppercase tracking-wider">
+                  AI Insights
+                </h3>
+                <div className="mt-3 space-y-1">
+                  {aiInsights.map((item) => {
+                    const Icon = item.icon;
+                    const isActive = location === item.href;
+
+                    return (
+                      <Link key={item.name} href={item.href}>
+                        <div
+                          className={cn(
+                            "flex items-center px-4 py-3 text-base font-medium rounded-lg transition-all duration-200 cursor-pointer space-x-3",
+                            isActive
+                              ? "bg-white text-[#2D3B87] shadow-sm"
+                              : "text-white/80 hover:bg-[#3A4A99] hover:text-white"
+                          )}
+                        >
+                          <Icon className="w-5 h-5" />
+                          <span className="font-medium">{item.name}</span>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </>
           )}
 
           {isCollapsed && (
-            <div className="pt-4 mt-4 border-t border-[#3A4A99]">
-              <div className="space-y-2">
-                {aiInsights.map((item) => {
-                  const Icon = item.icon;
-                  const isActive = location === item.href;
+            <>
+              <div className="pt-4 mt-4 border-t border-[#3A4A99]">
+                <div className="space-y-2">
+                  {analyticsNavigation.map((item) => {
+                    const Icon = item.icon;
+                    const isActive = location === item.href;
 
-                  return (
-                    <Link key={item.name} href={item.href}>
-                      <div
-                        className={cn(
-                          "flex items-center justify-center p-3 mx-1 text-base font-medium rounded-lg transition-all duration-200 cursor-pointer",
-                          isActive
-                            ? "bg-white text-[#2D3B87] shadow-sm"
-                            : "text-white/80 hover:bg-[#3A4A99] hover:text-white"
-                        )}
-                        title={item.name}
-                      >
-                        <Icon className="w-6 h-6" />
-                      </div>
-                    </Link>
-                  );
-                })}
+                    return (
+                      <Link key={item.name} href={item.href}>
+                        <div
+                          className={cn(
+                            "flex items-center justify-center p-3 mx-1 text-base font-medium rounded-lg transition-all duration-200 cursor-pointer",
+                            isActive
+                              ? "bg-white text-[#2D3B87] shadow-sm"
+                              : "text-white/80 hover:bg-[#3A4A99] hover:text-white"
+                          )}
+                          title={item.name}
+                        >
+                          <Icon className="w-6 h-6" />
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+
+              <div className="pt-4 mt-4 border-t border-[#3A4A99]">
+                <div className="space-y-2">
+                  {aiInsights.map((item) => {
+                    const Icon = item.icon;
+                    const isActive = location === item.href;
+
+                    return (
+                      <Link key={item.name} href={item.href}>
+                        <div
+                          className={cn(
+                            "flex items-center justify-center p-3 mx-1 text-base font-medium rounded-lg transition-all duration-200 cursor-pointer",
+                            isActive
+                              ? "bg-white text-[#2D3B87] shadow-sm"
+                              : "text-white/80 hover:bg-[#3A4A99] hover:text-white"
+                          )}
+                          title={item.name}
+                        >
+                          <Icon className="w-6 h-6" />
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </>
           )}
         </nav>
 

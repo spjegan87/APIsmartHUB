@@ -17,8 +17,10 @@ import Billing from "@/pages/billing";
 import Documentation from "@/pages/documentation";
 import Monitoring from "@/pages/monitoring";
 import AIInsights from "@/pages/ai-insights";
+import ApiAnalytics from "./pages/analytics-api";
+import PerformanceAnalytics from "./pages/analytics-performance";
+import NotFound from "./pages/not-found";
 import Login from "@/pages/login";
-import NotFound from "@/pages/not-found";
 import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
 
@@ -43,7 +45,7 @@ function ProtectedRoute({ component: Component }: { component: React.ComponentTy
   useEffect(() => {
     const authStatus = localStorage.getItem("isAuthenticated");
     setIsAuthenticated(authStatus === "true");
-    
+
     if (authStatus !== "true") {
       setLocation("/login");
     }
@@ -85,7 +87,7 @@ function Router() {
         isMobileOpen={isMobileMenuOpen} 
         onMobileClose={() => setIsMobileMenuOpen(false)} 
       />
-      
+
       <div className="flex-1 flex flex-col overflow-hidden lg:ml-0">
         <Header title={config.title} description={config.description} />
         <main className="flex-1 overflow-y-auto p-3 sm:p-6 bg-muted/20">
@@ -99,6 +101,8 @@ function Router() {
             <Route path="/billing" component={() => <ProtectedRoute component={Billing} />} />
             <Route path="/docs" component={() => <ProtectedRoute component={Documentation} />} />
             <Route path="/monitoring" component={() => <ProtectedRoute component={Monitoring} />} />
+            <Route path="/analytics/api" component={ApiAnalytics} />
+            <Route path="/analytics/performance" component={PerformanceAnalytics} />
             <Route path="/recommendations" component={() => <ProtectedRoute component={AIInsights} />} />
             <Route component={NotFound} />
           </Switch>
