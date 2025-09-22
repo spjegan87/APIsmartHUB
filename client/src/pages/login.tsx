@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -64,15 +63,16 @@ export default function Login() {
       description: "Design, validate, and version your API schemas with ease",
       color: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-50",
-      delay: "animation-delay-100"
+      delay: "animation-delay-100",
     },
     {
       icon: Shield,
       title: "Access Control",
-      description: "Secure your APIs with advanced authentication and authorization",
+      description:
+        "Secure your APIs with advanced authentication and authorization",
       color: "from-emerald-500 to-emerald-600",
       bgColor: "bg-emerald-50",
-      delay: "animation-delay-200"
+      delay: "animation-delay-200",
     },
     {
       icon: BarChart3,
@@ -80,7 +80,7 @@ export default function Login() {
       description: "Real-time insights and performance monitoring",
       color: "from-purple-500 to-purple-600",
       bgColor: "bg-purple-50",
-      delay: "animation-delay-300"
+      delay: "animation-delay-300",
     },
     {
       icon: Users,
@@ -88,14 +88,14 @@ export default function Login() {
       description: "Manage users, roles, and permissions efficiently",
       color: "from-amber-500 to-amber-600",
       bgColor: "bg-amber-50",
-      delay: "animation-delay-400"
+      delay: "animation-delay-400",
     },
   ];
 
   const stats = [
     { value: "99.9%", label: "Uptime", color: "text-blue-600" },
     { value: "10k+", label: "APIs Managed", color: "text-emerald-600" },
-    { value: "500+", label: "Organizations", color: "text-purple-600" }
+    { value: "500+", label: "Organizations", color: "text-purple-600" },
   ];
 
   return (
@@ -104,7 +104,7 @@ export default function Login() {
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
-        
+
         {/* Floating particles */}
         <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/30 rounded-full animate-ping animation-delay-1000"></div>
         <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-blue-400/40 rounded-full animate-pulse animation-delay-3000"></div>
@@ -124,7 +124,7 @@ export default function Login() {
                 APIsmartHUB
               </span>
             </div>
-            
+
             <div className="relative">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-3 lg:mb-4 leading-tight">
                 Powerful API Management
@@ -136,7 +136,7 @@ export default function Login() {
                 <Sparkles className="w-5 h-5 lg:w-6 lg:h-6" />
               </div>
             </div>
-            
+
             <p className="text-sm lg:text-base text-gray-300 mb-4 lg:mb-6 leading-relaxed">
               Streamline your API lifecycle with comprehensive management,
               documentation, monitoring, and analytics in one unified platform.
@@ -148,12 +148,14 @@ export default function Login() {
             {features.slice(0, 4).map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <div 
+                <div
                   key={index}
                   className={`group bg-white/10 backdrop-blur-sm rounded-lg p-3 lg:p-4 border border-white/20 hover:bg-white/20 transition-all duration-500 transform hover:scale-105 animate-fade-in-up ${feature.delay} cursor-pointer`}
                 >
                   <div className="flex items-start space-x-2 lg:space-x-3">
-                    <div className={`w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-r ${feature.color} rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}>
+                    <div
+                      className={`w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-r ${feature.color} rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
+                    >
                       <Icon className="w-4 h-4 lg:w-5 lg:h-5 text-white" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -168,18 +170,6 @@ export default function Login() {
                 </div>
               );
             })}
-          </div>
-
-          {/* Statistics with animations - Compact */}
-          <div className="grid grid-cols-3 gap-3 lg:gap-4 pt-4 border-t border-white/20">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center group animate-fade-in-up" style={{animationDelay: `${800 + index * 200}ms`}}>
-                <div className={`text-lg lg:text-2xl font-bold mb-1 ${stat.color} group-hover:scale-110 transition-transform duration-300`}>
-                  {stat.value}
-                </div>
-                <div className="text-xs lg:text-sm text-gray-400">{stat.label}</div>
-              </div>
-            ))}
           </div>
         </div>
 
@@ -283,7 +273,9 @@ export default function Login() {
                     Demo credentials available below
                   </div>
                   <div className="space-y-2">
-                    <p className="text-xs text-gray-600 font-medium">Demo Access:</p>
+                    <p className="text-xs text-gray-600 font-medium">
+                      Demo Access:
+                    </p>
                     <div className="flex justify-center gap-2">
                       <span className="font-mono text-xs bg-gray-100 px-2 py-1 rounded border border-gray-200 hover:bg-gray-200 transition-colors cursor-pointer">
                         infinitiapi
