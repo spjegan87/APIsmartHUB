@@ -163,7 +163,7 @@ export function Sidebar({ isMobileOpen = false, onMobileClose }: SidebarProps) {
                 <Link key={item.name} href={item.href}>
                   <div
                     className={cn(
-                      "flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer",
+                      "flex items-center space-x-3 px-4 py-3 text-base font-medium rounded-lg transition-all duration-200 cursor-pointer",
                       isActive
                         ? "bg-white text-[#2D3B87] shadow-sm"
                         : "text-white/80 hover:bg-[#3A4A99] hover:text-white",
@@ -190,7 +190,7 @@ export function Sidebar({ isMobileOpen = false, onMobileClose }: SidebarProps) {
                   <Link key={item.name} href={item.href}>
                     <div
                       className={cn(
-                        "flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer",
+                        "flex items-center space-x-3 px-4 py-3 text-base font-medium rounded-lg transition-all duration-200 cursor-pointer",
                         isActive
                           ? "bg-white text-[#2D3B87] shadow-sm"
                           : "text-white/80 hover:bg-[#3A4A99] hover:text-white",
