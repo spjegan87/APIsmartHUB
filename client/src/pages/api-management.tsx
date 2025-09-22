@@ -25,7 +25,8 @@ import {
   Bell,
   Mail,
   MessageSquare,
-  Webhook
+  Webhook,
+  Trash2
 } from "lucide-react";
 
 const apiSchemas = [
@@ -210,9 +211,15 @@ export default function ApiManagement() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{schema.lastModified}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{schema.format}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                      <Button variant="link" size="sm" className="text-blue-600">Edit</Button>
-                      <Button variant="link" size="sm" className="text-blue-600">Clone</Button>
-                      <Button variant="link" size="sm" className="text-red-600">Delete</Button>
+                      <Button variant="ghost" size="sm" className="text-blue-600 hover:bg-blue-50" title="Edit">
+                        <Settings className="w-4 h-4" />
+                      </Button>
+                      <Button variant="ghost" size="sm" className="text-blue-600 hover:bg-blue-50" title="Clone">
+                        <Copy className="w-4 h-4" />
+                      </Button>
+                      <Button variant="ghost" size="sm" className="text-red-600 hover:bg-red-50" title="Delete">
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
                     </td>
                   </tr>
                 ))}
