@@ -6,11 +6,11 @@ import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
-  Download, 
-  CreditCard, 
-  FileText, 
-  Settings, 
+import {
+  Download,
+  CreditCard,
+  FileText,
+  Settings,
   BarChart3,
   TrendingUp,
   DollarSign,
@@ -77,7 +77,7 @@ const plans = [
     price: 99,
     features: [
       "Up to 10 million API calls",
-      "15 team members", 
+      "15 team members",
       "Advanced analytics",
       "Priority support",
       "Custom rate limits",
@@ -140,7 +140,7 @@ export default function Billing() {
                   <p className="text-gray-600">Perfect for growing teams</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-3xl font-bold text-gray-900">${billingData.currentSubscription.amount}</p>
+                  <p className="text-3xl font-bold text-gray-900">₹{billingData.currentSubscription.amount}</p>
                   <p className="text-gray-500">per month</p>
                 </div>
               </div>
@@ -240,7 +240,7 @@ export default function Billing() {
                   <p className="text-xs text-green-600">+2.4% from last week</p>
                 </div>
               </div>
-              
+
               {/* Simple chart representation */}
               <div className="h-40 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg flex items-center justify-center">
                 <div className="text-center">
@@ -331,7 +331,7 @@ export default function Billing() {
                   <tr key={index} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{invoice.date}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{invoice.invoice}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{invoice.amount}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{invoice.amount.replace('$', '₹')}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <Badge className="bg-green-100 text-green-800">{invoice.status}</Badge>
                     </td>
@@ -369,7 +369,7 @@ export default function Billing() {
                 <div className="text-center mb-6">
                   <h3 className="text-xl font-bold text-gray-900">{plan.name}</h3>
                   <div className="mt-2">
-                    <span className="text-3xl font-bold">${plan.price}</span>
+                    <span className="text-3xl font-bold">₹{plan.price}</span>
                     <span className="text-gray-500">/month</span>
                   </div>
                 </div>
@@ -381,8 +381,8 @@ export default function Billing() {
                     </li>
                   ))}
                 </ul>
-                <Button 
-                  className="w-full" 
+                <Button
+                  className="w-full"
                   variant={plan.current ? "outline" : "default"}
                   disabled={plan.current}
                 >
@@ -474,14 +474,14 @@ export default function Billing() {
             </div>
             <div className="border-b pb-4">
               <h4 className="font-medium text-gray-900 mb-2">How are API overages charged?</h4>
-              <p className="text-sm text-gray-600">API calls beyond your plan limit are charged at $0.01 per 1,000 requests. Overages are included in your next invoice.</p>
+              <p className="text-sm text-gray-600">API calls beyond your plan limit are charged at ₹0.01 per 1,000 requests. Overages are included in your next invoice.</p>
             </div>
             <div>
               <h4 className="font-medium text-gray-900 mb-2">Can I get a refund for my subscription?</h4>
               <p className="text-sm text-gray-600">We offer refunds within 30 days of your initial purchase. Contact support for assistance with refund requests.</p>
             </div>
           </div>
-          
+
           <Button variant="outline" className="mt-6">
             View All FAQs
           </Button>

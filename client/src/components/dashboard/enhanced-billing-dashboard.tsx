@@ -92,7 +92,7 @@ export function EnhancedBillingDashboard() {
               <div className="flex items-center justify-center mb-2">
                 <DollarSign className="w-5 h-5 text-green-600 mr-1" />
                 <span className="text-2xl font-bold text-gray-900">
-                  ${billingAnalytics.currentPeriod.revenue.toLocaleString()}
+                  ₹{billingAnalytics.currentPeriod.revenue.toLocaleString()}
                 </span>
               </div>
               <p className="text-sm text-gray-600 mb-1">Monthly Revenue</p>
@@ -115,7 +115,7 @@ export function EnhancedBillingDashboard() {
 
             <div className="text-center p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg">
               <div className="text-2xl font-bold text-gray-900 mb-2">
-                ${billingAnalytics.currentPeriod.avgRevenuePerUser.toFixed(2)}
+                ₹{billingAnalytics.currentPeriod.avgRevenuePerUser.toFixed(2)}
               </div>
               <p className="text-sm text-gray-600 mb-1">ARPU</p>
               <p className="text-purple-600 text-sm">Average Revenue Per User</p>
@@ -153,7 +153,7 @@ export function EnhancedBillingDashboard() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-medium text-gray-900">${plan.revenue.toLocaleString()}</p>
+                    <p className="font-medium text-gray-900">₹{plan.revenue.toLocaleString()}</p>
                     <p className="text-sm text-gray-500">revenue</p>
                   </div>
                 </div>
@@ -172,7 +172,7 @@ export function EnhancedBillingDashboard() {
               <div className="p-3 border border-gray-200 rounded-lg">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-sm font-medium">API Calls</span>
-                  <span className="text-sm font-medium">${billingAnalytics.usageMetrics.apiCalls.cost}</span>
+                  <span className="text-sm font-medium">₹{billingAnalytics.usageMetrics.apiCalls.cost}</span>
                 </div>
                 <Progress value={(billingAnalytics.usageMetrics.apiCalls.used / billingAnalytics.usageMetrics.apiCalls.limit) * 100} className="mb-1" />
                 <p className="text-xs text-gray-500">
@@ -183,7 +183,7 @@ export function EnhancedBillingDashboard() {
               <div className="p-3 border border-gray-200 rounded-lg">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-sm font-medium">Bandwidth</span>
-                  <span className="text-sm font-medium">${billingAnalytics.usageMetrics.bandwidth.cost}</span>
+                  <span className="text-sm font-medium">₹{billingAnalytics.usageMetrics.bandwidth.cost}</span>
                 </div>
                 <Progress value={(billingAnalytics.usageMetrics.bandwidth.used / billingAnalytics.usageMetrics.bandwidth.limit) * 100} className="mb-1" />
                 <p className="text-xs text-gray-500">
@@ -194,7 +194,7 @@ export function EnhancedBillingDashboard() {
               <div className="p-3 border border-gray-200 rounded-lg">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-sm font-medium">Storage</span>
-                  <span className="text-sm font-medium">${billingAnalytics.usageMetrics.storage.cost}</span>
+                  <span className="text-sm font-medium">₹{billingAnalytics.usageMetrics.storage.cost}</span>
                 </div>
                 <Progress value={(billingAnalytics.usageMetrics.storage.used / billingAnalytics.usageMetrics.storage.limit) * 100} className="mb-1" />
                 <p className="text-xs text-gray-500">
@@ -205,7 +205,7 @@ export function EnhancedBillingDashboard() {
               <div className="p-3 border border-gray-200 rounded-lg">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-sm font-medium">Team Members</span>
-                  <span className="text-sm font-medium">${billingAnalytics.usageMetrics.teamMembers.cost}</span>
+                  <span className="text-sm font-medium">₹{billingAnalytics.usageMetrics.teamMembers.cost}</span>
                 </div>
                 <Progress value={(billingAnalytics.usageMetrics.teamMembers.used / billingAnalytics.usageMetrics.teamMembers.limit) * 100} className="mb-1" />
                 <p className="text-xs text-gray-500">
@@ -250,7 +250,7 @@ export function EnhancedBillingDashboard() {
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="text-right">
-                    <p className="font-medium text-gray-900">${transaction.amount.toFixed(2)}</p>
+                    <p className="font-medium text-gray-900">₹{transaction.amount.toFixed(2)}</p>
                     <p className="text-xs text-gray-500">{transaction.date}</p>
                   </div>
                   <Badge className={getStatusColor(transaction.status)}>
