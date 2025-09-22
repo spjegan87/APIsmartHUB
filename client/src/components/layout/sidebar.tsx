@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import {
@@ -48,7 +47,7 @@ const navigation = [
     icon: LayoutDashboard,
   },
   {
-    name: "API Schema Management",
+    name: "API Management",
     href: "/api-management",
     icon: Code,
   },
@@ -122,17 +121,19 @@ export function Sidebar({ isMobileOpen = false, onMobileClose }: SidebarProps) {
     <>
       {/* Mobile Overlay */}
       {isMobileOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={onMobileClose}
         />
       )}
-      
+
       {/* Sidebar */}
-      <div className={cn(
-        "fixed lg:static inset-y-0 left-0 z-50 w-64 bg-[#2D3B87] flex flex-col shadow-lg transform transition-transform duration-200 ease-in-out lg:translate-x-0",
-        isMobileOpen ? "translate-x-0" : "-translate-x-full"
-      )}>
+      <div
+        className={cn(
+          "fixed lg:static inset-y-0 left-0 z-50 w-64 bg-[#2D3B87] flex flex-col shadow-lg transform transition-transform duration-200 ease-in-out lg:translate-x-0",
+          isMobileOpen ? "translate-x-0" : "-translate-x-full",
+        )}
+      >
         {/* Logo Section */}
         <div className="flex items-center px-6 py-6 border-b border-[#3A4A99]">
           <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-[#2D3B87] font-bold text-sm">
@@ -210,7 +211,10 @@ export function Sidebar({ isMobileOpen = false, onMobileClose }: SidebarProps) {
         <div className="px-4 py-6 border-t border-[#3A4A99]">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg">
-              {user.name.split(' ').map(n => n[0]).join('')}
+              {user.name
+                .split(" ")
+                .map((n) => n[0])
+                .join("")}
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-semibold text-white">{user.name}</p>
