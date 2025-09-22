@@ -25,8 +25,6 @@ import {
   Building2,
   Menu,
   X,
-  PanelLeftClose,
-  PanelLeftOpen,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -97,7 +95,6 @@ interface SidebarProps {
 export function Sidebar({ isMobileOpen = false, onMobileClose }: SidebarProps) {
   const [location] = useLocation();
   const [, setLocation] = useLocation();
-  const [isCollapsed, setIsCollapsed] = useState(false);
   const [theme, setTheme] = useState("light");
   const [highContrast, setHighContrast] = useState(false);
   const [largeText, setLargeText] = useState(false);
@@ -113,18 +110,7 @@ export function Sidebar({ isMobileOpen = false, onMobileClose }: SidebarProps) {
     if (userData) {
       setUser(JSON.parse(userData));
     }
-    
-    const collapsedState = localStorage.getItem("sidebarCollapsed");
-    if (collapsedState) {
-      setIsCollapsed(JSON.parse(collapsedState));
-    }
   }, []);
-
-  const toggleSidebar = () => {
-    const newCollapsedState = !isCollapsed;
-    setIsCollapsed(newCollapsedState);
-    localStorage.setItem("sidebarCollapsed", JSON.stringify(newCollapsedState));
-  };
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
@@ -144,36 +130,17 @@ export function Sidebar({ isMobileOpen = false, onMobileClose }: SidebarProps) {
       
       {/* Sidebar */}
       <div className={cn(
-        "fixed lg:static inset-y-0 left-0 z-50 bg-[#2D3B87] flex flex-col shadow-lg transform transition-all duration-300 ease-in-out lg:translate-x-0",
-        isMobileOpen ? "translate-x-0" : "-translate-x-full",
-        isCollapsed ? "w-16" : "w-64"
+        "fixed lg:static inset-y-0 left-0 z-50 w-64 bg-[#2D3B87] flex flex-col shadow-lg transform transition-transform duration-200 ease-in-out lg:translate-x-0",
+        isMobileOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         {/* Logo Section */}
         <div className="flex items-center px-6 py-6 border-b border-[#3A4A99]">
           <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-[#2D3B87] font-bold text-sm">
             API
           </div>
-          {!isCollapsed && (
-            <span className="ml-3 text-xl font-semibold text-white truncate">
-              APIsmartHUB
-            </span>
-          )}
-          {/* Toggle Button for Desktop */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className={cn(
-              "text-white hover:bg-[#3A4A99] hidden lg:flex",
-              isCollapsed ? "ml-0" : "ml-auto"
-            )}
-            onClick={toggleSidebar}
-          >
-            {isCollapsed ? (
-              <PanelLeftOpen className="w-5 h-5" />
-            ) : (
-              <PanelLeftClose className="w-5 h-5" />
-            )}
-          </Button>
+          <span className="ml-3 text-xl font-semibold text-white truncate">
+            APIsmartHUB
+          </span>
           {/* Mobile Close Button */}
           <Button
             variant="ghost"
@@ -196,55 +163,25 @@ export function Sidebar({ isMobileOpen = false, onMobileClose }: SidebarProps) {
                 <Link key={item.name} href={item.href}>
                   <div
                     className={cn(
-                      "flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer",
+                      "flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer",
                       isActive
                         ? "bg-white text-[#2D3B87] shadow-sm"
                         : "text-white/80 hover:bg-[#3A4A99] hover:text-white",
-                      isCollapsed ? "justify-center" : "space-x-3"
                     )}
-                    title={isCollapsed ? item.name : undefined}
                   >
                     <Icon className="w-5 h-5" />
-                    {!isCollapsed && (
-                      <span className="font-medium">{item.name}</span>
-                    )}
+                    <span className="font-medium">{item.name}</span>
                   </div>
                 </Link>
               );
             })}
           </div>
 
-          {!isCollapsed && (
-            <div className="pt-6 mt-6 border-t border-[#3A4A99]">
-              <h3 className="px-4 text-xs font-semibold text-white/60 uppercase tracking-wider">
-                AI Insights
-              </h3>
-              <div className="mt-3 space-y-1">
-                {aiInsights.map((item) => {
-                  const Icon = item.icon;
-                  const isActive = location === item.href;
-
-                  return (
-                    <Link key={item.name} href={item.href}>
-                      <div
-                        className={cn(
-                          "flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer",
-                          isActive
-                            ? "bg-white text-[#2D3B87] shadow-sm"
-                            : "text-white/80 hover:bg-[#3A4A99] hover:text-white",
-                        )}
-                      >
-                        <Icon className="w-5 h-5" />
-                        <span className="font-medium">{item.name}</span>
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-          {isCollapsed && (
-            <div className="pt-6 mt-6 border-t border-[#3A4A99] space-y-1">
+          <div className="pt-6 mt-6 border-t border-[#3A4A99]">
+            <h3 className="px-4 text-xs font-semibold text-white/60 uppercase tracking-wider">
+              AI Insights
+            </h3>
+            <div className="mt-3 space-y-1">
               {aiInsights.map((item) => {
                 const Icon = item.icon;
                 const isActive = location === item.href;
@@ -253,60 +190,43 @@ export function Sidebar({ isMobileOpen = false, onMobileClose }: SidebarProps) {
                   <Link key={item.name} href={item.href}>
                     <div
                       className={cn(
-                        "flex items-center justify-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer",
+                        "flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer",
                         isActive
                           ? "bg-white text-[#2D3B87] shadow-sm"
                           : "text-white/80 hover:bg-[#3A4A99] hover:text-white",
                       )}
-                      title={item.name}
                     >
                       <Icon className="w-5 h-5" />
+                      <span className="font-medium">{item.name}</span>
                     </div>
                   </Link>
                 );
               })}
             </div>
-          )}
+          </div>
         </nav>
 
         {/* User Profile */}
         <div className="px-4 py-6 border-t border-[#3A4A99]">
-          {isCollapsed ? (
-            <div className="flex flex-col items-center space-y-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg">
-                {user.name.split(' ').map(n => n[0]).join('')}
-              </div>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-white/60 hover:text-red-400 hover:bg-[#3A4A99] p-2"
-                onClick={handleLogout}
-                title="Logout"
-              >
-                <LogOut className="w-4 h-4" />
-              </Button>
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg">
+              {user.name.split(' ').map(n => n[0]).join('')}
             </div>
-          ) : (
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg">
-                {user.name.split(' ').map(n => n[0]).join('')}
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-white">{user.name}</p>
-                <p className="text-xs text-white/60 truncate">{user.email}</p>
-                <p className="text-xs text-white/40">{user.role}</p>
-              </div>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-white/60 hover:text-red-400 hover:bg-[#3A4A99] p-2"
-                onClick={handleLogout}
-                title="Logout"
-              >
-                <LogOut className="w-4 h-4" />
-              </Button>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-white">{user.name}</p>
+              <p className="text-xs text-white/60 truncate">{user.email}</p>
+              <p className="text-xs text-white/40">{user.role}</p>
             </div>
-          )}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-white/60 hover:text-red-400 hover:bg-[#3A4A99] p-2"
+              onClick={handleLogout}
+              title="Logout"
+            >
+              <LogOut className="w-4 h-4" />
+            </Button>
+          </div>
         </div>
       </div>
     </>
